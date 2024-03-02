@@ -2,11 +2,11 @@ package dao;
 
 import model.usuario;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class usuarioDao {
     private Connection connection;
@@ -33,5 +33,29 @@ public class usuarioDao {
             System.err.println("Erro ao inserir usuário no banco de dados: " + e.getMessage());
         }
         return false;
+    }
+
+    public usuario obterusuarioPorEmailSenha(String email, String senha) {
+        String sql = "SELECT * FROM Usuarios WHERE Email = ? AND Senha = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, senha);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                usuario usuario = new usuario();
+                usuario.setNome(resultSet.getString("Nome"));
+                usuario.setEmail(resultSet.getString("Email"));
+                usuario.setCpf(resultSet.getString("CPF"));
+                usuario.setSenha(resultSet.getString("Senha"));
+                usuario.setConfirmarSenha(resultSet.getString("ConfirmarSenha"));
+                return usuario;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Erro ao obter usuário do banco de dados: " + e.getMessage());
+        }
+        return null;
     }
 }

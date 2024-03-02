@@ -28,7 +28,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
 
         // Redirecione para uma página de sucesso ou erro com base no resultado da inserção
         if (sucesso) {
-            response.sendRedirect("dashboard.jsp"); // Página de sucesso
+            response.sendRedirect("index.jsp"); // Página de sucesso
         } else {
             response.sendRedirect("cadastroErro.jsp"); // Página de erro
         }

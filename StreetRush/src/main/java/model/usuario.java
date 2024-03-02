@@ -17,6 +17,10 @@ public class usuario {
         this.confirmarSenha = confirmarSenha;
     }
 
+    public usuario() {
+
+    }
+
     // Getters e Setters
     public int getId() {
         return id;

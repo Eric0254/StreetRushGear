@@ -26,14 +26,15 @@
 
     <!-- Parte tela de login -->
     <div class="form-container sign-in">
-        <form>
+        <form action="/login" method="post">
             <h1>Entrar</h1>
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Senha">
+            <input type="email" name="email" placeholder="Email">
+            <input type="password" name="senha" placeholder="Senha">
             <a href="#">Esqueceu sua senha?</a>
-            <button>Entrar</button>
+            <button type="submit">Entrar</button>
         </form>
     </div>
+
     <div class="toggle-container">
         <div class="toggle">
             <div class="toggle-panel toggle-left">
