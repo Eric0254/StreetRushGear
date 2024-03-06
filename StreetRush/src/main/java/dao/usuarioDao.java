@@ -20,13 +20,14 @@ public class usuarioDao {
     }
 
     public boolean inserirUsuario(usuario usuario) {
-        String sql = "INSERT INTO Usuarios (Nome, Email, CPF, Senha, ConfirmarSenha) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Usuarios (Nome, Email, CPF, Senha, ConfirmarSenha, Cargo) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, usuario.getNome());
             preparedStatement.setString(2, usuario.getEmail());
             preparedStatement.setString(3, usuario.getCpf());
             preparedStatement.setString(4, usuario.getSenha());
             preparedStatement.setString(5, usuario.getConfirmarSenha());
+            preparedStatement.setString(6, usuario.getCargo());
             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

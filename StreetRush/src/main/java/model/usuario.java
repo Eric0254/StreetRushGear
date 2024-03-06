@@ -7,14 +7,16 @@ public class usuario {
     private String cpf;
     private String senha;
     private String confirmarSenha;
+    private String cargo;
 
     // Construtor
-    public usuario(String nome, String email, String cpf, String senha, String confirmarSenha) {
+    public usuario(String nome, String email, String cpf, String senha, String confirmarSenha, String cargo) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.senha = senha;
         this.confirmarSenha = confirmarSenha;
+        this.cargo = cargo;
     }
 
     public usuario() {
@@ -70,6 +72,14 @@ public class usuario {
         this.confirmarSenha = confirmarSenha;
     }
 
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -79,6 +89,7 @@ public class usuario {
                 ", cpf='" + cpf + '\'' +
                 ", senha='" + senha + '\'' +
                 ", confirmarSenha='" + confirmarSenha + '\'' +
+                ", cargo='" + cargo + '\'' +
                 '}';
     }
 }

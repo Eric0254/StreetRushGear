@@ -18,9 +18,16 @@ public class CadastroUsuarioServlet extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String senha = request.getParameter("senha");
         String confirmarSenha = request.getParameter("confirmarSenha");
+        String cargo = request.getParameter("cargo");
+
+         // Verificar novamente se as senhas coincidem
+         if (!senha.equals(confirmarSenha)) {
+             response.sendRedirect("cadastroErro.jsp"); // Página de erro
+             return;
+         }
 
         // Crie um objeto Usuario com os parâmetros recebidos
-        usuario usuario = new usuario(nome, email, cpf, senha, confirmarSenha);
+        usuario usuario = new usuario(nome, email, cpf, senha, confirmarSenha, cargo);
 
         // Insira o usuário no banco de dados
         usuarioDao  usuarioDao = new usuarioDao(); // Certifique-se de ter a lógica para obter a conexão
