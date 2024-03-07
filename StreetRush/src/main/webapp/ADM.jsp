@@ -1,9 +1,11 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Importando CSS e JavaScript -->
     <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!--===============================================================================================-->
@@ -33,44 +35,27 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link text-white font-weight-bold dropdown-toggle" href="#" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            Jogos
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold" href="#">Comunidade</a>
+
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white font-weight-bold" href="#">News</a>
-                    </li>
                 </ul>
 
-                <c:if test="${not empty sessionScope.usuario}">
+                <c:if test="${not empty sessionScope.usuarioLogado}">
+                    <!-- Usuário logado -->
                     <div class="dropdown">
-                        <button class="btn btn-danger dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                            Bem-vindo, ${sessionScope.usuario.name}
+                        <button class="btn btn-danger dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bem-vindo, ${sessionScope.usuarioLogado.nome} <!-- Substitua 'nome' pelo atributo correto do seu objeto Usuario -->
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                            <c:if test="${sessionScope.usuario.email eq 'gmaiabarbosa13@gmail.com'}">
-                                <li><a class="dropdown-item" href="ADM.jsp">Listar Usuario</a></li>
-                            </c:if>
-                            <li><a class="dropdown-item" href="logout">Logout</a></li>
+                            <li><a class="dropdown-item" href="ADM.jsp">Perfil</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            <!-- Adicione mais opções se necessário (por exemplo, para usuários administradores) -->
                         </ul>
                     </div>
+                </c:if>
+                <c:if test="${empty sessionScope.usuarioLogado}">
+                    <!-- Usuário não logado -->
+                    <a class="btn btn-danger" href="index.jsp">Login</a>
                 </c:if>
 
             </div>
@@ -79,41 +64,45 @@
 </header>
 <main class="container mt-4">
     <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <img src="img/Produtos.png" class="card-img-top" alt="Imagem Inserir">
-                <div class="card-body">
-                    <h5 class="card-title">Listar Produto</h5>
-                    <p class="card-text">Clique aqui para exibir os produtos listado.</p>
-                    <a href="" class="btn btn-primary">Exibir</a>
-                </div>
-            </div>
-        </div>
+        <c:if test="${not empty sessionScope.usuarioLogado}">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/Produtos.png" class="card-img-top" alt="Imagem Inserir">
+                                <div class="card-body">
+                                    <h5 class="card-title">Listar Produto</h5>
+                                    <p class="card-text">Clique aqui para exibir os produtos listados.</p>
+                                    <a href="" class="btn btn-primary">Exibir</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/Usuario.png" class="card-img-top" alt="Imagem Usuario">
+                                <div class="card-body">
+                                    <h5 class="card-title">Listar Usuario</h5>
+                                    <p class="card-text">Clique aqui para exibir os usuários listados.</p>
+                                    <a href="#" class="btn btn-primary">Exibir</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="img/Pedido.png" class="card-img-top" alt="Imagem Excluir">
+                                <div class="card-body">
+                                    <h5 class="card-title">Listar Pedidos</h5>
+                                    <p class="card-text">Clique aqui para exibir os pedidos listados.</p>
+                                    <a href="#" class="btn btn-danger">Exibir</a>
+                                </div>
+                            </div>
+                        </div>
+                </c:if>
 
-        <div class="col-md-4">
-            <div class="card">
-                <img src="img/Usuario.png" class="card-img-top" alt="Imagem Usuario">
-                <div class="card-body">
-                    <h5 class="card-title">Listar Usuario</h5>
-                    <p class="card-text">Clique aqui para exibri os usuarios listados.</p>
-                    <a href="#" class="btn btn-primary">Exibir</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card">
-                <img src="img/Pedido.png" class="card-img-top" alt="Imagem Excluir">
-                <div class="card-body">
-                    <h5 class="card-title">Listar Pedidos</h5>
-                    <p class="card-text">Clique aqui para exibri os pedisos listados.</p>
-                    <a href="#" class="btn btn-danger">Exibir</a>
-                </div>
-            </div>
-        </div>
+        <c:if test="${empty sessionScope.usuarioLogado}">
+            <p>Nenhum usuário logado.</p>
+        </c:if>
     </div>
-
 </main>
+
 <footer class="text-light py-3" style="background-color: #1C1C1C;">
     <div class="container">
         <div class="row">
@@ -144,3 +133,4 @@
 </footer>
 </body>
 </html>
+
