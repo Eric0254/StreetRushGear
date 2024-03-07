@@ -20,6 +20,11 @@
             <input type="text" id="cpf" name="cpf" placeholder="Cpf" maxlength="14" oninput="formatarCpf(this)" required>
             <input type="password" name="senha" placeholder="Senha" required>
             <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" required>
+            <label for="cargo">Selecione o cargo:</label>
+                <select id="cargo" name="cargo">
+                    <option value="administrador">Administrador</option>
+                    <option value="estoquista">Estoquista</option>
+                </select>
             <button type="submit">Inscrever-se</button>
         </form>
     </div>

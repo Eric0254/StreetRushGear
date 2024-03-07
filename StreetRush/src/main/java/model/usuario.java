@@ -9,14 +9,19 @@ public class usuario {
     private String confirmarSenha;
     private String cargo;
 
+    private String status;
+
+
     // Construtor
-    public usuario(String nome, String email, String cpf, String senha, String confirmarSenha, String cargo) {
+    public usuario(int id, String nome, String email, String cpf, String senha, String confirmarSenha, String cargo, String status) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
         this.senha = senha;
         this.confirmarSenha = confirmarSenha;
         this.cargo = cargo;
+        this.status = status;
     }
 
     public usuario() {
@@ -80,9 +85,17 @@ public class usuario {
         this.cargo = cargo;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Usuario{" +
+        return "usuario{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
@@ -90,6 +103,7 @@ public class usuario {
                 ", senha='" + senha + '\'' +
                 ", confirmarSenha='" + confirmarSenha + '\'' +
                 ", cargo='" + cargo + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }
