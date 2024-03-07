@@ -29,7 +29,7 @@ public class LoginUsuarioServlet extends HttpServlet {
             session.setAttribute("usuarioLogado", usuario);
 
             // Redirecione para a página principal ou alguma outra página de boas-vindas
-            response.sendRedirect("dashboard.jsp");
+            response.sendRedirect("ADM.jsp");
         } else {
             // Se o usuário não foi encontrado, redirecione para uma página de erro de login
             response.sendRedirect("loginErro.jsp");
