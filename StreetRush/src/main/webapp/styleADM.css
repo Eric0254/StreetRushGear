@@ -1,0 +1,23 @@
+.custom-navbar {
+    background: linear-gradient(to bottom, #000, #1C1C1C);
+    color: #fff;
+}
+
+footer{
+    margin-top: 50px; /* Adicione uma margem superior para ajustar o rodapé */
+    background-color: #1C1C1C;
+    color: #fff;
+}
+.img{
+    width: 60px;
+    height: 50px;
+    border-radius: 50%;
+}
+.Pe{
+    width: 100px;
+    border-radius: 50%;
+}
+.navbar{
+    background: linear-gradient(to bottom, #000, #1C1C1C);
+    color: #000000;
+}
