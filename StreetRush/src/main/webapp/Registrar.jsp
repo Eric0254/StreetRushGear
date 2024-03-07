@@ -21,7 +21,7 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-md-6">
             <div class="form-container sign-up">
-                <form action="/create-user" method="post">
+                <form action="/create-user" method="post" onsubmit="return validateForm()">
                     <h1 class="mb-4">Criar uma conta</h1>
                     <div class="form-group">
                         <input type="text" class="form-control" name="nome" placeholder="Nome" required>
@@ -45,14 +45,13 @@
                     <div class="form-group">
                         <input type="password" class="form-control" name="confirmarSenha" id="confirmarSenha" placeholder="Confirmar Senha" required>
                     </div>
-                    <input type="hidden" name="senhaCriptografada" id="senhaCriptografada">
                     <button type="submit" class="btn btn-primary">Inscrever-se</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<script src="https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 <script>
     function formatarCpf(campo) {
         let valor = campo.value.replace(/\D/g, ''); // Remove caracteres não numéricos
@@ -68,23 +67,14 @@
         campo.value = valor;
     }
 
-    function validarFormulario() {
+    function validateForm() {
         var senha = document.getElementById('senha').value;
         var confirmarSenha = document.getElementById('confirmarSenha').value;
 
-        // Verificar se as senhas são iguais
         if (senha !== confirmarSenha) {
-            alert("As senhas não coincidem. Por favor, verifique.");
+            alert('As senhas não coincidem. Por favor, verifique e tente novamente.');
             return false;
         }
-
-        // Criptografar a senha
-        var senhaCriptografada = CryptoJS.SHA256(senha).toString(CryptoJS.enc.Hex);
-
-        // Atualizar o valor da senha criptografada no campo oculto
-        document.getElementById('senhaCriptografada').value = senhaCriptografada;
-
-        return true;
     }
 </script>
 
