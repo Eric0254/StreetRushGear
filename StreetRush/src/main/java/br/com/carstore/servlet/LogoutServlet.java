@@ -1,4 +1,5 @@
 package br.com.carstore.servlet;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -16,6 +17,12 @@ public class LogoutServlet extends HttpServlet {
         if (session != null) {
             session.invalidate();
         }
+
+        // Adicionando cabeçalhos para controlar o cache
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        response.setHeader("Expires", "0"); // Proxies.
+
         response.sendRedirect("index.jsp");
     }
 }
