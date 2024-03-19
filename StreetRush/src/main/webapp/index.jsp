@@ -50,7 +50,7 @@
             <div class="toggle-panel toggle-right">
                 <h1>Olá amigo!</h1>
                 <p>Registre-se com seus dados pessoais para usar todos os recursos do site</p>
-                <button class="hidden" id="register">Inscrever-se</button>
+               <!-- <button class="hidden" id="register">Inscrever-se</button>-->
             </div>
         </div>
     </div>
