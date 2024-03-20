@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="StyleLista.css">
 
-    <title>Lista de usuários</title>
+    <title>Lista de Produtos</title>
 </head>
 
 <body>
-    <h1 class="title">Lista de Usuários</h1>
+    <h1 class="title">Lista de Produtos</h1>
 
             <div class="filter-input">
             <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Pesquisar por nome">
@@ -25,31 +25,20 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Email</th>
-                    <th>CPF</th>
-                    <th>Grupo</th>
+                    <th>Qtd Estoque</th>
+                    <th>Valor</th>
                     <th>Status</th>
                     <th>Editar</th>
                     <th>Alterar Status</th>
-                    <th><button onclick="window.location.href='Registrar.jsp'">+</button></th>
+                    <th><button onclick="window.location.href='cadastroProduto.jsp'">+</button></th>
                 </tr>
 
-                <c:forEach var="user" items="${users}">
+                <c:forEach var="prod" items="${prods}">
                     <tr>
-                        <td>${user.id}</td>
-                        <td>${user.nome}</td>
-                        <td>${user.email}</td>
-                        <td>${user.cpf}</td>
-                        <td>${user.cargo}</td>
-                        <td>${user.status}</td>
-                        <td><button onclick="abrirNovaJanela('${user.id}', '${user.nome}', '${user.email}', '${user.cpf}', '${user.cargo}', '${user.senha}', '${user.confirmarSenha}')">Editar</button>
-                        <td>
-                                    <form action="AtualizarStatusServlet" method="post">
-                                        <input type="hidden" name="userId" value="${user.id}">
-                                        <input type="hidden" name="status" value="${user.status}">
-                                        <button type="submit">Ativar/Inativar</button>
-                                    </form>
-                                </td>
+                        <td>${prod.id}</td>
+                        <td>${prod.nome}</td>
+                        <td>${prod.qtdEstoque}</td>
+                        <td>${prod.preco}</td>
 
                     </tr>
                 </c:forEach>
@@ -80,17 +69,7 @@
                         }
                     }
 
-                function abrirNovaJanela(id, nome, email, cpf, cargo, senha, confirmarSenha) {
-                        var url = "nova_pagina.jsp?id=" + encodeURIComponent(id) +
-                                  "&nome=" + encodeURIComponent(nome) +
-                                  "&email=" + encodeURIComponent(email) +
-                                  "&cpf=" + encodeURIComponent(cpf) +
-                                  "&cargo=" + encodeURIComponent(cargo)+
-                                  "&senha=" + encodeURIComponent(senha) +
-                                  "&confirmarSenha=" + encodeURIComponent(confirmarSenha);
 
-                        window.open(url, "_blank");
-                    }
             </script>
 
 </body

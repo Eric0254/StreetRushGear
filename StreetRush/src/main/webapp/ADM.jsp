@@ -84,7 +84,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Listar Usuario</h5>
                                 <p class="card-text">Clique aqui para exibir os usuários listados.</p>
-                                <a href="#" class="btn btn-primary">Exibir</a>
+                                <a href="lista-usuario" class="btn btn-primary">Exibir</a>
                             </div>
                         </div>
                     </div>
