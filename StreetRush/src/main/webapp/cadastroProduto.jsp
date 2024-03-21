@@ -15,9 +15,17 @@
 
       <label for="productRating">Avaliação:</label>
       <select id="productRating" name="avaliacao" required>
-        <option value="0.5">0.5</option>
-        <!-- Restante das opções de avaliação -->
-      </select>
+              <option value="0.5" ${param.avaliacao == '0.5' ? 'selected' : ''}>0.5</option>
+              <option value="1" ${param.avaliacao == '1' ? 'selected' : ''}>1</option>
+              <option value="1.5" ${param.avaliacao == '1.5' ? 'selected' : ''}>1.5</option>
+              <option value="2" ${param.avaliacao == '2' ? 'selected' : ''}>2</option>
+              <option value="2.5" ${param.avaliacao == '2.5' ? 'selected' : ''}>2.5</option>
+              <option value="3" ${param.avaliacao == '3' ? 'selected' : ''}>3</option>
+              <option value="3.5" ${param.avaliacao == '3.5' ? 'selected' : ''}>3.5</option>
+              <option value="4" ${param.avaliacao == '4' ? 'selected' : ''}>4</option>
+              <option value="4.5" ${param.avaliacao == '4.5' ? 'selected' : ''}>4.5</option>
+              <option value="5" ${param.avaliacao == '5' ? 'selected' : ''}>5</option>
+          </select>
 
       <label for="productDescription">Descrição Detalhada:</label>
       <textarea id="productDescription" name="descricao" maxlength="2000" required></textarea>

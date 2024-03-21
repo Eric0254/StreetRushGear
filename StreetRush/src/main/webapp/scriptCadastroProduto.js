@@ -46,6 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // Função para cancelar o envio do formulário
   function cancel() {
     // Redireciona para a página de lista de produtos (página de destino não implementada neste exemplo)
-    window.location.href = "lista_de_produtos.jsp";
+    window.location.href = "lista-produto";
   }
 });

@@ -26,6 +26,7 @@ public class ProdutoServlet extends HttpServlet {
         String imagemPrincipal = request.getParameter("imagemPrincipal");
         List<Part> parts = (List<Part>) request.getParts();
         List<String> images = uploadImages(request, parts);
+        String status = "Ativo";
 
         Produto product = new Produto();
         product.setNome(nome);
@@ -35,6 +36,7 @@ public class ProdutoServlet extends HttpServlet {
         product.setQtdEstoque(qtdEstoque);
         product.setImagemPrincipal(imagemPrincipal);
         product.setImagens(images);
+        product.setStatus(status);
 
         // Salvar no banco de dados
         ProdutoDAO.addProduct(product);

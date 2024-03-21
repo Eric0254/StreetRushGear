@@ -12,6 +12,8 @@ public class Produto {
     private String imagemPrincipal;
     private List<String> imagens;
 
+    private String status;
+
     public int getId() {
         return id;
     }
@@ -74,5 +76,13 @@ public class Produto {
 
     public void setImagens(List<String> imagens) {
         this.imagens = imagens;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

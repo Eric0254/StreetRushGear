@@ -14,18 +14,18 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-@WebServlet("/lista-produto")
-public class ListaProdutoServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        List<Produto> prods = new ProdutoDAO().ShowProduct();
+    @WebServlet("/lista-produto")
+    public class ListaProdutoServlet extends HttpServlet {
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+                throws ServletException, IOException {
+            List<Produto> prods = new ProdutoDAO().ShowProduct();
 
-        Collections.sort(prods,(p1, p2) -> p2.getId() - p1.getId());
+            Collections.sort(prods,(p1, p2) -> p2.getId() - p1.getId());
 
-        request.setAttribute("prods", prods);
+            request.setAttribute("prods", prods);
 
-        request.getRequestDispatcher("listaProdutos.jsp").forward(request,response);
-    }
+            request.getRequestDispatcher("listaProdutos.jsp").forward(request,response);
+        }
 
 
 

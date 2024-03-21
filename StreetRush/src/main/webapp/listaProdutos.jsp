@@ -30,6 +30,7 @@
                     <th>Status</th>
                     <th>Editar</th>
                     <th>Alterar Status</th>
+                    <th>Visualizar Produto</th>
                     <th><button onclick="window.location.href='cadastroProduto.jsp'">+</button></th>
                 </tr>
 
@@ -38,8 +39,11 @@
                         <td>${prod.id}</td>
                         <td>${prod.nome}</td>
                         <td>${prod.qtdEstoque}</td>
-                        <td>${prod.preco}</td>
-
+                        <td>R$ ${prod.preco}</td>
+                        <td>${prod.status}</td>
+                        <td><button onclick="abrirNovaJanela('${prod.id}', '${prod.nome}', '${prod.avaliacao}', '${prod.descricao}', '${prod.preco}', '${prod.qtdEstoque}', '${prod.imagemPrincipal}')">Editar</button></td>
+                        <td>Alterar</td>
+                        <td><button onclick="abrirNovaJanela('${prod.id}', '${prod.nome}', '${prod.avaliacao}', '${prod.descricao}', '${prod.preco}', '${prod.qtdEstoque}', '${prod.imagemPrincipal}')">Visualizar</button></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -69,7 +73,18 @@
                         }
                     }
 
+                    function abrirNovaJanela(id, nome, avaliacao, descricao, preco, qtdEstoque, status, imagemPrincipal) {
+                                            var url = "editProd.jsp?id=" + encodeURIComponent(id) +
+                                                      "&nome=" + encodeURIComponent(nome) +
+                                                      "&avaliacao=" + encodeURIComponent(avaliacao) +
+                                                      "&descricao=" + encodeURIComponent(descricao) +
+                                                      "&preco=" + encodeURIComponent(preco)+
+                                                      "&qtdEstoque=" + encodeURIComponent(qtdEstoque) +
+                                                      "&status=" + encodeURIComponent(status) +
+                                                      "&imagemPrincipal=" + encodeURIComponent(imagemPrincipal);
 
+                                            window.open(url, "_blank");
+                                        }
             </script>
 
-</body
+</bodyl
