@@ -31,7 +31,9 @@
                     <th>Editar</th>
                     <th>Alterar Status</th>
                     <th>Visualizar Produto</th>
+                    <c:if test="${sessionScope.usuarioLogado.cargo.equalsIgnoreCase('administrador')}">
                     <th><button onclick="window.location.href='cadastroProduto.jsp'">+</button></th>
+                    </c:if>
                 </tr>
 
                 <c:forEach var="prod" items="${prods}">
@@ -48,7 +50,6 @@
                 </c:forEach>
             </table>
             </div>
-
             <script>
                     function filterTable() {
                         var input, filter, table, tr, td, i, txtValue;
@@ -87,4 +88,4 @@
                                         }
             </script>
 
-</bodyl
+</body>

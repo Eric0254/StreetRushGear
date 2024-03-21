@@ -55,6 +55,8 @@ public class usuarioDao {
                 usuario.setCpf(resultSet.getString("CPF"));
                 usuario.setSenha(resultSet.getString("Senha"));
                 usuario.setConfirmarSenha(resultSet.getString("ConfirmarSenha"));
+                usuario.setCargo(resultSet.getString("Cargo"));
+                usuario.setStatus(resultSet.getString("Status"));
                 return usuario;
             }
         } catch (SQLException e) {
@@ -68,8 +70,6 @@ public class usuarioDao {
         String SQL = "SELECT * FROM Usuarios";
 
         try {
-
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
 
             System.out.println("success in database connection");
 

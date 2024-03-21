@@ -18,6 +18,7 @@ public class LoginUsuarioServlet extends HttpServlet {
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
 
+
         // Verifique se o usuário existe no banco de dados
         usuarioDao usuarioDao = new usuarioDao(); // Certifique-se de ter a lógica para obter a conexão
         usuario usuario = usuarioDao.obterusuarioPorEmailSenha(email, senha);
@@ -27,6 +28,8 @@ public class LoginUsuarioServlet extends HttpServlet {
             // Se o usuário existe, crie uma sessão e armazene informações do usuário nela
             HttpSession session = request.getSession();
             session.setAttribute("usuarioLogado", usuario);
+            System.out.println("Sessão criada com sucesso. Usuário logado: " + usuario.getEmail()+usuario.getCargo());
+
 
             // Redirecione para a página principal ou alguma outra página de boas-vindas
             response.sendRedirect("ADM.jsp");

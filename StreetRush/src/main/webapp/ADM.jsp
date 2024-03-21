@@ -73,7 +73,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Listar Produto</h5>
                                 <p class="card-text">Clique aqui para exibir os produtos listados.</p>
-                                <a href="" class="btn btn-primary">Exibir</a>
+                                <a href="lista-produto" class="btn btn-primary">Exibir</a>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Listar Produto</h5>
                                 <p class="card-text">Clique aqui para exibir os produtos listados.</p>
-                                <a href="" class="btn btn-primary">Exibir</a>
+                                <a href="lista-produto" class="btn btn-primary">Exibir</a>
                             </div>
                         </div>
                     </div>
