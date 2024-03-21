@@ -58,6 +58,7 @@ public class ProdutoDAO {
                 String status = resultSet.getString("status");
                 Blob imagem = resultSet.getBlob("imagem_principal");
 
+
                 Produto prod = new Produto();
                 prod.setId(id);
                 prod.setNome(prodName);
@@ -97,6 +98,29 @@ public class ProdutoDAO {
             preparedStatement.setDouble(4, prod.getPreco());
             preparedStatement.setInt(5, prod.getQtdEstoque());
             preparedStatement.setInt(6, prod.getId());
+            preparedStatement.execute();
+
+            System.out.println("success in update profile");
+
+        } catch (Exception e) {
+
+            System.out.println("fail in database connection");
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void updateStatus(Produto prod){
+        String SQL = "UPDATE Produtos SET status = ? WHERE ID = ?";
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.setString(1, prod.getStatus());
+            preparedStatement.setInt(2, prod.getId());
             preparedStatement.execute();
 
             System.out.println("success in update profile");
