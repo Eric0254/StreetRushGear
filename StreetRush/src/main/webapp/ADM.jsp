@@ -71,7 +71,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Listar Produto</h5>
                         <p class="card-text">Clique aqui para exibir os produtos listados.</p>
-                        <a href="" class="btn btn-primary">Exibir</a>
+                        <a href="#" class="btn btn-primary">Exibir</a>
                     </div>
                 </div>
             </div>
@@ -85,16 +85,52 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" id="pedido-card" style="display: none;">
-                <div class="card">
-                    <img src="img/Pedido.png" class="card-img-top" alt="Imagem Excluir">
-                    <div class="card-body">
-                        <h5 class="card-title">Listar Pedidos</h5>
-                        <p class="card-text">Clique aqui para exibir os pedidos listados.</p>
-                        <a href="#" class="btn btn-danger">Exibir</a>
+            <c:choose>
+                <c:when test="${sessionScope.usuarioLogado.cargo != 'estoquista'}">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="img/Produtos.png" class="card-img-top" alt="Imagem Inserir">
+                            <div class="card-body">
+                                <h5 class="card-title">Listar Produto</h5>
+                                <p class="card-text">Clique aqui para exibir os produtos listados.</p>
+                                <a href="lista-produto" class="btn btn-primary">Exibir</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="img/Usuario.png" class="card-img-top" alt="Imagem Usuario">
+                            <div class="card-body">
+                                <h5 class="card-title">Listar Usuario</h5>
+                                <p class="card-text">Clique aqui para exibir os usuários listados.</p>
+                                <a href="lista-usuario" class="btn btn-primary">Exibir</a>
+                            </div>
+                        </div>
+                    </div>
+                </c:when>
+                <c:when test="${sessionScope.usuarioLogado.cargo == 'estoquista'}">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="img/Produtos.png" class="card-img-top" alt="Imagem Inserir">
+                            <div class="card-body">
+                                <h5 class="card-title">Listar Produto</h5>
+                                <p class="card-text">Clique aqui para exibir os produtos listados.</p>
+                                <a href="lista-produto" class="btn btn-primary">Exibir</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="img/Pedido.png" class="card-img-top" alt="Imagem Excluir">
+                            <div class="card-body">
+                                <h5 class="card-title">Listar Pedidos</h5>
+                                <p class="card-text">Clique aqui para exibir os pedidos listados.</p>
+                                <a href="#" class="btn btn-danger">Exibir</a>
+                            </div>
+                        </div>
+                    </div>
+                </c:when>
+            </c:choose>
         </c:if>
 
         <c:if test="${empty sessionScope.usuarioLogado}">
