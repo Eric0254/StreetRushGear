@@ -29,6 +29,7 @@ import java.util.List;
 
             List<Produto> prods = new ProdutoDAO().ShowProduct();
 
+
             Collections.sort(prods,(p1, p2) -> p2.getId() - p1.getId());
 
             request.setAttribute("prods", prods);

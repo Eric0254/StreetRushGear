@@ -30,7 +30,9 @@
                     <th>Status</th>
                     <th>Editar</th>
                     <th>Alterar Status</th>
+                    <c:if test="${sessionScope.usuarioLogado.cargo.equalsIgnoreCase('administrador')}">
                     <th>Visualizar Produto</th>
+                    </c:if>
                     <c:if test="${sessionScope.usuarioLogado.cargo.equalsIgnoreCase('administrador')}">
                     <th><button onclick="window.location.href='cadastroProduto.jsp'">+</button></th>
                     </c:if>
@@ -44,8 +46,16 @@
                         <td>R$ ${prod.preco}</td>
                         <td>${prod.status}</td>
                         <td><button onclick="abrirNovaJanela('${prod.id}', '${prod.nome}', '${prod.avaliacao}', '${prod.descricao}', '${prod.preco}', '${prod.qtdEstoque}', '${prod.imagemPrincipal}')">Editar</button></td>
-                        <td>Alterar</td>
-                        <td><button onclick="abrirNovaJanela('${prod.id}', '${prod.nome}', '${prod.avaliacao}', '${prod.descricao}', '${prod.preco}', '${prod.qtdEstoque}', '${prod.imagemPrincipal}')">Visualizar</button></td>
+                        <td>
+                        <form action="AtualizarStatusPServlet" method="post">
+                              <input type="hidden" name="id" value="${prod.id}">
+                              <input type="hidden" name="status" value="${prod.status}">
+                              <button type="submit">Ativar/Inativar</button>
+                        </form>
+                        </td>
+                        <c:if test="${sessionScope.usuarioLogado.cargo.equalsIgnoreCase('administrador')}">
+                        <td><button>Visualizar</button></td>
+                        </c:if>
                     </tr>
                 </c:forEach>
             </table>
