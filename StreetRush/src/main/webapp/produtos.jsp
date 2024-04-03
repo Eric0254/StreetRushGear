@@ -15,7 +15,7 @@
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
             crossorigin="anonymous"></script>
     <!--===============================================================================================-->
-
+    <link rel="stylesheet" href="Csstela.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>StreetRushGear</title>
 </head>
@@ -73,42 +73,20 @@
 
 <div class="container mt-5">
     <h2>Produtos</h2>
-    <div class="row">
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="https://www.sucataskateshop.com.br/images/virtuemart/product/TRUCK%20STRONGER.jpg" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Truck stronger</h4>
-                    <h5>R$ 24.99</h5>
-                    <p class="card-text">Truck stronger.</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary">Comprar</button>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <div class="row" id="car-list"></div>
+    </div>
+    <div class="text-center p-3">
+        <button class="cbtn" id="load-more">Ver Mais</button>
+    </div>
 
-        <div class="col-lg-3 col-md-4 mb-4">
-            <div class="card h-100">
-                <img class="card-img-top" src="https://www.sucataskateshop.com.br/images/virtuemart/product/TRUCK%20STRONGER.jpg" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Truck stronger</h4>
-                    <h5>R$ 19.99</h5>
-                    <p class="card-text">Truck stronger.</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary">Comprar</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Adicione mais cards conforme necessário -->
 
     </div>
 </div>
 
 
 <!-- Bootstrap Bundle with Popper -->
+<script src="DisplayPage.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,203 @@
+.square-image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Define a proporção 1:1 (altura igual à largura) */
+    position: relative;
+}
+
+.square-image img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantém a imagem dentro do espaço */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.game-image {
+    border: 20px;
+    max-width: 80%;
+    background-color: transparent !important; /* Defina o fundo como transparente para remover o fundo branco */
+    padding: 0; /* Remova qualquer preenchimento */
+    margin: 0; /* Remova qualquer margem */
+    margin-left: 150px;
+}
+.c-item {
+    height: 480px;
+}
+
+.c-img {
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+.btnLg {
+    margin-left: 20px;
+}
+
+.Obj {
+    width: 150px;
+}
+
+.Obj2 {
+    height: 400px;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+.card img {
+    transition: transform .3s;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card{
+    border: 1px solid white;
+    transition: transform .3s;
+
+}
+.card:hover {
+    box-shadow: 20px 20px 10px rgb(0, 0, 0);
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+.comprar-btn {
+    background-color: #000;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.card-text {
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
+    font-weight: bold;
+}
+
+.btn-up{
+    width: 200px;
+    height: 35px;
+}
+
+.btn-text{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.deco {
+    text-decoration: none;
+}
+
+.btn.btn-text.btn-up.btn-sm.comprar-btn:hover {
+    background-color: #363636;
+    color: #ffffff;
+}
+
+.pd{
+    padding: 15px;
+}
+
+.deta{
+    background-color: #000;
+    color: white;
+}
+
+.btn-secondary.deta.btn-text:hover {
+    background-color: #363636;
+    color: #ffffff;
+}
+
+.zoom-img {
+    position: relative;
+}
+
+.zoom-img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.zoom-img:hover::before {
+    opacity: 1;
+}
+
+.zoom-img img {
+    transition: transform 0.3s ease;
+}
+
+.zoom-img:hover img {
+    transform: scale(1.2);
+}
+
+.small-img-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.small-img-group {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.small-img-col {
+    flex: 1;
+    margin-right: 5px;
+}
+
+.small-img {
+    width: 65%;
+    cursor: pointer;
+}
+
+.zoom-img {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    padding-bottom: 100%;
+    cursor: pointer;
+}
+
+.zoom-img img {
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.zoom-img.zoomed img {
+    transform: scale(1.5);
+}
+
+.img{
+    width: 60px;
+    height: 50px;
+}
+
+.btn{
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    background-color: #FF0000; /* Vermelho mais claro */
+    border-color: #FF0000; /* Vermelho mais claro */
+}
