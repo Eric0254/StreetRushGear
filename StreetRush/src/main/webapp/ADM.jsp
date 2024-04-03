@@ -65,26 +65,6 @@
 <main class="container mt-4">
     <div class="row">
         <c:if test="${not empty sessionScope.usuarioLogado}">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="img/Produtos.png" class="card-img-top" alt="Imagem Inserir">
-                    <div class="card-body">
-                        <h5 class="card-title">Listar Produto</h5>
-                        <p class="card-text">Clique aqui para exibir os produtos listados.</p>
-                        <a href="#" class="btn btn-primary">Exibir</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="img/Usuario.png" class="card-img-top" alt="Imagem Usuario">
-                    <div class="card-body">
-                        <h5 class="card-title">Listar Usuario</h5>
-                        <p class="card-text">Clique aqui para exibir os usuários listados.</p>
-                        <a href="#" class="btn btn-primary">Exibir</a>
-                    </div>
-                </div>
-            </div>
             <c:choose>
                 <c:when test="${sessionScope.usuarioLogado.cargo != 'estoquista'}">
                     <div class="col-md-4">
@@ -100,10 +80,21 @@
                     <div class="col-md-4">
                         <div class="card">
                             <img src="img/Usuario.png" class="card-img-top" alt="Imagem Usuario">
+
                             <div class="card-body">
                                 <h5 class="card-title">Listar Usuario</h5>
                                 <p class="card-text">Clique aqui para exibir os usuários listados.</p>
                                 <a href="lista-usuario" class="btn btn-primary">Exibir</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="img/Pedido.png" class="card-img-top" alt="Imagem Excluir">
+                            <div class="card-body">
+                                <h5 class="card-title">Listar Pedidos</h5>
+                                <p class="card-text">Clique aqui para exibir os pedidos listados.</p>
+                                <a href="#" class="btn btn-danger">Exibir</a>
                             </div>
                         </div>
                     </div>
@@ -131,23 +122,12 @@
                     </div>
                 </c:when>
             </c:choose>
-        </c:if>
+                </c:if>
 
         <c:if test="${empty sessionScope.usuarioLogado}">
             <p>Nenhum usuário logado.</p>
         </c:if>
     </div>
-
-    <script>
-        // Verificar o tipo de usuário logado usando JavaScript
-        var usuarioLogado = "${sessionScope.usuarioLogado.cargo}";
-
-        // Se o usuário for um administrador, mostrar o terceiro card
-        if (usuarioLogado != 'estoquista') {
-            document.getElementById("pedido-card").style.display = "block";
-        }
-    </script>
-
 </main>
 
 <footer class="text-light py-3" style="background-color: #1C1C1C;">
