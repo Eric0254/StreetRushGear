@@ -55,7 +55,7 @@
                 </c:if>
                 <c:if test="${empty sessionScope.usuarioLogado}">
                     <!-- Usuário não logado -->
-                    <a class="btn btn-danger" href="index.jsp">Login</a>
+                    <a class="btn btn-danger" href="login.jsp">Login</a>
                 </c:if>
 
             </div>

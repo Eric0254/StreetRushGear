@@ -1,78 +1,140 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>login page</title>
+    <!-- Importando CSS e JavaScript -->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!--===============================================================================================-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!--===============================================================================================-->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+            crossorigin="anonymous"></script>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="Csstela.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>StreetRushGear</title>
 </head>
-
+<style>
+    /* Estilo para fixar o nav no topo */
+    .fixed-top {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+</style>
 <body>
-
-<div class="container" id="container">
-    <div class="form-container sign-up">
-        <form action="/create-user" method="post">
-            <h1>Criar uma conta</h1>
-            <input type="text" name="nome" placeholder="Nome" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="text" id="cpf" name="cpf" placeholder="Cpf" maxlength="14" oninput="formatarCpf(this)" required>
-            <input type="password" name="senha" placeholder="Senha" required>
-            <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" required>
-            <label for="cargo">Selecione o cargo:</label>
-                <select id="cargo" name="cargo">
-                    <option value="administrador">Administrador</option>
-                    <option value="estoquista">Estoquista</option>
-                </select>
-            <button type="submit">Inscrever-se</button>
-        </form>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="img/Logo.jpg" alt="Logo" style="max-height: 60px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sobre Nós</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contato</a>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link" style="font-size: 0.7rem;">Faça Seu
+                        <a href="#" class="text-muted">Login</a><br>
+                        Ou <a href="#" class="text-muted">Cadastre-se</a> em nosso site</p>
+                </li>
+            </ul>
+        </div>
     </div>
+</nav>
 
-    <!-- Parte tela de login -->
-    <div class="form-container sign-in">
-        <form action="/login" method="post">
-            <h1>Entrar</h1>
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="senha" placeholder="Senha">
-            <a href="#">Esqueceu sua senha?</a>
-            <button type="submit">Entrar</button>
-        </form>
-    </div>
+<div class="container mt-5 pt-5"> <!-- Adicionando margem superior para afastar o carrossel do topo -->
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://cdn.dooca.store/1816/files/lauri-11-banner-desktop-1.png?v=1640472464&webp=0"
 
-    <div class="toggle-container">
-        <div class="toggle">
-            <div class="toggle-panel toggle-left">
-                <h1>Bem vindo de volta!</h1>
-                <p>Insira seus dados pessoais para usar todos os recursos do site</p>
-                <button class="hidden" id="login">Entrar</button>
+                     class="d-block w-100" alt="First Slide">
             </div>
-            <div class="toggle-panel toggle-right">
-                <h1>Olá amigo!</h1>
-                <p>Registre-se com seus dados pessoais para usar todos os recursos do site</p>
-               <!-- <button class="hidden" id="register">Inscrever-se</button>-->
+            <div class="carousel-item">
+                <img src="https://cdn.tfx.company/app/sellsurf/imagens/sell-surf-banner-desktop_img1.jpeg"
+                     class="d-block w-100" alt="Second Slide">
+            </div>
+            <div class="carousel-item">
+                <img src="https://road.shimano.com/_assets/images/stories/2023/seven-factors-which-influence-how-often-your-bike-needs-service/seven-factors-which-influence-how-often-your-bike-needs-a-service-banner.jpg"
+                     class="d-block w-100" alt="Third Slide">
             </div>
         </div>
     </div>
 </div>
 
-<script src="script.js"></script>
 
+<div class="container mt-5">
+    <h2>Produtos</h2>
+    <div class="container">
+        <div class="row" id="car-list"></div>
+    </div>
+    <div class="text-center p-3">
+        <button class="cbtn" id="load-more">Ver Mais</button>
+    </div>
+</div>
+
+
+<div class="container-fluid bg-white text-dark py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Links Úteis</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-dark">Sobre Nós</a></li>
+                    <li><a href="#" class="text-dark">Produtos</a></li>
+                    <li><a href="#" class="text-dark">Contato</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Redes Sociais</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-dark">Facebook</a></li>
+                    <li><a href="#" class="text-dark">Twitter</a></li>
+                    <li><a href="#" class="text-dark">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Contato</h5>
+                <address>
+                    Endereço: Rua Exemplo, 123<br>
+                    Cidade Exemplo - Estado<br>
+                    Telefone: (11) 1234-5678<br>
+                    Email: contato@exemplo.com
+                </address>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="DisplayPage.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script>
-    function formatarCpf(campo) {
-        let valor = campo.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-        if (valor.length > 3) {
-            valor = valor.substring(0, 3) + '.' + valor.substring(3);
-        }
-        if (valor.length > 7) {
-            valor = valor.substring(0, 7) + '.' + valor.substring(7);
-        }
-        if (valor.length > 11) {
-            valor = valor.substring(0, 11) + '-' + valor.substring(11);
-        }
-        campo.value = valor;
-    }
+    // JavaScript para fazer o carrossel passar automaticamente
+    $('.carousel').carousel({
+        interval: 3000 // muda a cada 3 segundos (3000 ms)
+    });
 </script>
+</nav>
 </body>
-
 </html>

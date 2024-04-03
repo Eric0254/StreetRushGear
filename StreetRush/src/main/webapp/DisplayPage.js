@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 <img src="${product.imgurl}" alt="${product.name}" class="img-fluid rounded">
                                             </div>
                                             <p class="text tt1"><strong>${product.name}</strong></p>
-                                            <p class="text tt1"><strong>Price: $${product.price}</strong></p>
+                                            <p class="text tt1"><strong>R$ ${product.price}</strong></p>
                                         </a>
                                     </div>
                                 `;
