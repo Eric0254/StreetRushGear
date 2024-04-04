@@ -5,7 +5,8 @@ CREATE TABLE Usuarios (
     CPF VARCHAR(14) UNIQUE NOT NULL,
     Senha VARCHAR(255) NOT NULL,
     ConfirmarSenha VARCHAR(255) NOT NULL,
-    Cargo VARCHAR(50)
+    Cargo VARCHAR(50), 
+    Status VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS produtos (
@@ -15,7 +16,8 @@ CREATE TABLE IF NOT EXISTS produtos (
     descricao TEXT NOT NULL,
     preco DECIMAL(10, 2) NOT NULL,
     quantidade_estoque INT NOT NULL,
-    imagem_padrao VARCHAR(200) NOT NULL
+    imagem_padrao VARCHAR(200) NOT NULL,
+    Status VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS imagens_produto (
