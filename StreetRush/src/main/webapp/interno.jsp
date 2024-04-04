@@ -67,11 +67,12 @@
         </div>
     </div>
 </nav>
-<div class="Corpo">
-    <div class="JGimage">
-        <img src="" alt="" id="card-img">
-        <p id="card-description"></p>
-        <p id="card-price"></p> <!-- Elemento para exibir o preço -->
+<div class="product-container">
+    <img src="caminho-da-imagem.jpg" alt="Produto" id="card-img">
+    <div class="product-details">
+        <p id="card-name">Nome do Produto</p>
+        <h3 style="display: inline-block;">R$</h3> <p id="card-price" style="display: inline-block;">Preço do Produto</p>
+        <h3>Descrição</h3><p id="card-description">Descrição do Produto</p>
     </div>
 </div>
 <div class="container-fluid bg-white text-dark py-3">
@@ -110,7 +111,8 @@
         const urlParams = new URLSearchParams(window.location.search);
         const cardImgElement = document.getElementById("card-img");
         const cardDescriptionElement = document.getElementById("card-description");
-        const cardPriceElement = document.getElementById("card-price"); // Elemento para exibir o preço
+        const cardPriceElement = document.getElementById("card-price");
+        const cardNameElement = document.getElementById("card-name");
 
         if (urlParams.has("imgurl")) {
             cardImgElement.src = urlParams.get("imgurl");
@@ -121,8 +123,12 @@
         }
 
         if (urlParams.has("price")) { // Verifique se o parâmetro 'price' existe
-            cardPriceElement.textContent = `R$ ${urlParams.get("price")}`; // Exiba o preço
+            cardPriceElement.textContent = urlParams.get("price"); // Exiba o preço
         }
+        if (urlParams.has("name")) {
+            cardNameElement.textContent = urlParams.get("name");
+        }
+
     });
 </script>
 
