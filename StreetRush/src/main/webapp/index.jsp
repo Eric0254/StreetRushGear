@@ -39,7 +39,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
+            <!-- Itens do Navbar -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sobre Nós</a>
                 </li>
@@ -49,15 +50,35 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contato</a>
                 </li>
+            </ul>
+
+            <!-- Itens de Login, Cadastro e Carrinho -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <p class="nav-link" style="font-size: 0.7rem;">Faça Seu
-                        <a href="#" class="text-muted">Login</a><br>
-                        Ou <a href="#" class="text-muted">Cadastre-se</a> em nosso site</p>
+                    <form class="d-flex" role="search">
+                        <p class="nav-link" style="font-size: 0.7rem;">
+                            Faça Seu
+                            <a href="login.jsp" class="text-muted">
+                                <span>Login</span>
+                            </a>
+                            <br>
+                            Ou
+                            <a href="login.jsp" class="text-muted">
+                                <span>Cadastre-se</span>
+                            </a>
+                            em nosso site
+                        </p>
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-shopping-cart"></i> <!-- Ícone de carrinho -->
+                        </a>
+                    </form>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+
 
 <div class="container mt-5 pt-5"> <!-- Adicionando margem superior para afastar o carrossel do topo -->
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">

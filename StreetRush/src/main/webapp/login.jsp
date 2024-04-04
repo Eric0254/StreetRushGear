@@ -20,11 +20,6 @@
             <input type="text" id="cpf" name="cpf" placeholder="Cpf" maxlength="14" oninput="formatarCpf(this)" required>
             <input type="password" name="senha" placeholder="Senha" required>
             <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" required>
-            <label for="cargo">Selecione o cargo:</label>
-                <select id="cargo" name="cargo">
-                    <option value="administrador">Administrador</option>
-                    <option value="estoquista">Estoquista</option>
-                </select>
             <button type="submit">Inscrever-se</button>
         </form>
     </div>
@@ -48,9 +43,9 @@
                 <button class="hidden" id="login">Entrar</button>
             </div>
             <div class="toggle-panel toggle-right">
-                <h1>Olá amigo!</h1>
+                <h1>Ola amigo!</h1>
                 <p>Registre-se com seus dados pessoais para usar todos os recursos do site</p>
-               <!-- <button class="hidden" id="register">Inscrever-se</button>-->
+               <button class="hidden" id="register">Inscrever-se</button>
             </div>
         </div>
     </div>

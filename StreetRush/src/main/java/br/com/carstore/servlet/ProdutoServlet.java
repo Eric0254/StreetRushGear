@@ -41,12 +41,13 @@ public class ProdutoServlet extends HttpServlet {
         // Salvar no banco de dados
         ProdutoDAO.addProduct(product);
 
-        response.sendRedirect("lista-produto");
+        response.sendRedirect("/lista-produto");
     }
 
     private List<String> uploadImages(HttpServletRequest request, List<Part> parts) throws IOException, ServletException {
         List<String> imagens = new ArrayList<>();
-        String uploadDir = "C:\\Users\\Gabriel\\Desktop\\teste"; // Diretório onde as imagens serão salvas
+        String uploadDir = "C:\\Users\\Pc trem\\Documents\\GitHub\\StreetRushGear\\StreetRush\\src\\main\\webapp\\img";
+        // Diretório onde as imagens serão salvas
 
         for (Part part : parts) {
             String fileName = getFileName(part);
