@@ -14,7 +14,7 @@ public class ProdutoDAO {
     private static final String PASSWORD = "sa"; // Senha do banco de dados
 
     public static void addProduct(Produto produto) {
-        String sql = "INSERT INTO produtos (nome, avaliacao, descricao, preco, quantidade_estoque, IMAGEM_PADRAO  , status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO produtos (nome, avaliacao, descricao, preco, qtd_estoque, IMAGEM_PRINCIPAL  , status) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -54,9 +54,9 @@ public class ProdutoDAO {
                 double prodAval = resultSet.getDouble("avaliacao");
                 String descricao = resultSet.getString("descricao");
                 double preco = resultSet.getDouble("preco");
-                int qtd = resultSet.getInt("quantidade_estoque");
+                int qtd = resultSet.getInt("qtd_estoque");
                 String status = resultSet.getString("status");
-                Blob imagem = resultSet.getBlob("IMAGEM_PADRAO");
+                Blob imagem = resultSet.getBlob("IMAGEM_PRINCIPAL");
 
 
                 Produto prod = new Produto();
