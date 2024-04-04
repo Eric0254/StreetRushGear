@@ -45,12 +45,12 @@
                         <td>${prod.qtdEstoque}</td>
                         <td>R$ ${prod.preco}</td>
                         <td>${prod.status}</td>
-                        <td><button onclick="abrirNovaJanela('${prod.id}', '${prod.nome}', '${prod.avaliacao}', '${prod.descricao}', '${prod.preco}', '${prod.qtdEstoque}', '${prod.imagemPrincipal}')">Editar</button></td>
+                        <td><button onclick="abrirNovaJanela('${prod.id}', '${prod.nome}', '${prod.avaliacao}', '${prod.descricao}', '${prod.preco}', '${prod.qtdEstoque}')">Editar</button></td>
                         <td>
-                        <form action="AtualizarStatusPServlet" method="post">
+                        <form id="statusForm_${prod.id}" action="AtualizarStatusPServlet" method="post">
                               <input type="hidden" name="id" value="${prod.id}">
                               <input type="hidden" name="status" value="${prod.status}">
-                              <button type="submit">Ativar/Inativar</button>
+                              <button type="button" onclick="confirmStatusUpdate('${prod.id}')">Ativar/Inativar</button>
                         </form>
                         </td>
                         <c:if test="${sessionScope.usuarioLogado.cargo.equalsIgnoreCase('administrador')}">
@@ -96,6 +96,16 @@
 
                                             window.open(url, "_blank");
                                         }
+
+
+                                            function confirmStatusUpdate(productId) {
+                                                var confirmation = confirm("Tem certeza que deseja ativar/inativar este produto?");
+                                                if (confirmation) {
+                                                    var formId = "statusForm_" + productId;
+                                                    document.getElementById(formId).submit();
+                                                }
+                                            }
+
             </script>
 
 </body>

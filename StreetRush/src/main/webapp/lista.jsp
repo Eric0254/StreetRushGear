@@ -44,12 +44,12 @@
                         <td>${user.status}</td>
                         <td><button onclick="abrirNovaJanela('${user.id}', '${user.nome}', '${user.email}', '${user.cpf}', '${user.cargo}', '${user.senha}', '${user.confirmarSenha}')">Editar</button>
                         <td>
-                                    <form action="AtualizarStatusServlet" method="post">
-                                        <input type="hidden" name="userId" value="${user.id}">
-                                        <input type="hidden" name="status" value="${user.status}">
-                                        <button type="submit">Ativar/Inativar</button>
-                                    </form>
-                                </td>
+                            <form id="statusForm_${user.id}" action="AtualizarStatusServlet" method="post">
+                                <input type="hidden" name="userId" value="${user.id}">
+                                <input type="hidden" name="status" value="${user.status}">
+                                <button type="button" onclick="confirmStatusUpdate('${user.id}')">Ativar/Inativar</button>
+                            </form>
+                        </td>
 
                     </tr>
                 </c:forEach>
@@ -91,6 +91,14 @@
 
                         window.open(url, "_blank");
                     }
+
+                    function confirmStatusUpdate(userId) {
+                            var confirmation = confirm("Tem certeza que deseja ativar/inativar este usuário?");
+                            if (confirmation) {
+                                var formId = "statusForm_" + userId;
+                                document.getElementById(formId).submit();
+                            }
+                        }
             </script>
 
 </body
