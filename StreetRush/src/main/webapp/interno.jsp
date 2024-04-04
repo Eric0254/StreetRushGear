@@ -72,6 +72,8 @@
     <div class="product-details">
         <p id="card-name">Nome do Produto</p>
         <h3 style="display: inline-block;">R$</h3> <p id="card-price" style="display: inline-block;">Preço do Produto</p>
+        <p></p>
+        <button id="botao">Comprar</button>
         <h3>Descrição</h3><p id="card-description">Descrição do Produto</p>
     </div>
 </div>

@@ -368,3 +368,6 @@ footer {
 .carousel img:hover {
     transform: scale(1.1); /* Efeito de escala ao passar o mouse */
 }
+#botao{
+    margin-left: 20px;
+}
