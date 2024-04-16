@@ -1,0 +1,66 @@
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+.endereco-container {
+    display: flex;
+    align-items: center;
+}
+
+.endereco-container label {
+    flex: 0 0 120px; /* Largura fixa para o label */
+    margin-right: 10px; /* Espaçamento entre o label e o input */
+}
+
+.endereco-container .logradouro-input {
+    flex: 3; /* Largura maior para o campo de logradouro */
+}
+
+.endereco-container .numero-input {
+    flex: 1; /* Largura menor para o campo de número */
+}
+
+.numero-label {
+    margin-left: 20px; /* Espaçamento entre o logradouro e o número */
+}
