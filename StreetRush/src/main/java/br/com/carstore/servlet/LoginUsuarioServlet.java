@@ -1,7 +1,9 @@
 package br.com.carstore.servlet;
 
-import dao.usuarioDao; // Certifique-se de importar a classe correta
-import model.usuario; // Certifique-se de importar a classe correta
+import dao.usuarioDao;
+import model.usuario;
+import dao.ClienteDao;
+import model.Cliente;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,27 +16,32 @@ import java.io.IOException;
 public class LoginUsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Obtenha os parâmetros do formulário
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
 
+        ClienteDao clienteDao = new ClienteDao();
+        usuario cliente = clienteDao.obterclientePorEmailSenha(email,senha);
 
-        // Verifique se o usuário existe no banco de dados
-        usuarioDao usuarioDao = new usuarioDao(); // Certifique-se de ter a lógica para obter a conexão
+        usuarioDao usuarioDao = new usuarioDao();
         usuario usuario = usuarioDao.obterusuarioPorEmailSenha(email, senha);
 
-        // Verifique se o usuário foi encontrado
         if (usuario != null) {
-            // Se o usuário existe, crie uma sessão e armazene informações do usuário nela
             HttpSession session = request.getSession();
             session.setAttribute("usuarioLogado", usuario);
             System.out.println("Sessão criada com sucesso. Usuário logado: " + usuario.getEmail()+usuario.getCargo());
 
 
-            // Redirecione para a página principal ou alguma outra página de boas-vindas
             response.sendRedirect("ADM.jsp");
-        } else {
-            // Se o usuário não foi encontrado, redirecione para uma página de erro de login
+
+        } else if(cliente != null){
+            HttpSession session = request.getSession();
+            session.setAttribute("clienteLogado", cliente);
+            System.out.println("Sessão criada com sucesso. Cliente logado: " + cliente.getEmail()+cliente.getNome());
+
+
+            response.sendRedirect("index.jsp");
+        }
+        else {
             response.sendRedirect("loginErro.jsp");
         }
     }
