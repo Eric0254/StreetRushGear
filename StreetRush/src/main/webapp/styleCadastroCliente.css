@@ -1,11 +1,22 @@
 .container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     width: 80%;
     margin: 0 auto;
+}
+
+.titulo {
+    text-align: center;
+    margin-top: 0;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.faturamento,
+.entrega {
+    width: 48%; /* Ajuste para que ambos caibam na mesma linha com um pequeno espaço entre eles */
 }
 
 .form-group {
@@ -19,6 +30,7 @@ label {
 
 input[type="text"],
 input[type="date"],
+input[type="radio"],
 select {
     width: 100%;
     padding: 8px;
@@ -48,19 +60,35 @@ button:hover {
     align-items: center;
 }
 
-.endereco-container label {
-    flex: 0 0 120px; /* Largura fixa para o label */
-    margin-right: 10px; /* Espaçamento entre o label e o input */
+.endereco-container label,
+.numero-label {
+    flex: 0 0 120px;
+    margin-right: 10px;
 }
 
 .endereco-container .logradouro-input {
-    flex: 3; /* Largura maior para o campo de logradouro */
+    flex: 3;
 }
 
 .endereco-container .numero-input {
-    flex: 1; /* Largura menor para o campo de número */
+    flex: 1;
 }
 
-.numero-label {
-    margin-left: 20px; /* Espaçamento entre o logradouro e o número */
+.excluir-campo {
+    margin-left: 10px; /* Adiciona um espaçamento entre o campo e o botão de exclusão */
+    padding: 5px 10px; /* Ajusta o espaçamento interno do botão */
+    background-color: #dc3545; /* Cor de fundo vermelha */
+    color: #fff; /* Cor do texto branca */
+    border: none; /* Remove a borda */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
+    cursor: pointer; /* Mostra o cursor de clique */
+}
+
+.excluir-campo:hover {
+    background-color: #c82333; /* Cor de fundo vermelha mais escura ao passar o mouse */
+}
+
+/* adicionar margem ao redor de cada conjunto de campos de endereço de entrega */
+#enderecoEntregaContainer > div {
+    margin-bottom: 20px;
 }
