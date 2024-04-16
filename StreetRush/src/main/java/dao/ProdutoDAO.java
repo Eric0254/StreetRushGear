@@ -56,7 +56,7 @@ public class ProdutoDAO {
                 double preco = resultSet.getDouble("preco");
                 int qtd = resultSet.getInt("qtd_estoque");
                 String status = resultSet.getString("status");
-                Blob imagem = resultSet.getBlob("IMAGEM_PRINCIPAL");
+                String imagePath = resultSet.getString("IMAGEM_PRINCIPAL");
 
 
                 Produto prod = new Produto();
@@ -67,7 +67,7 @@ public class ProdutoDAO {
                 prod.setPreco(preco);
                 prod.setQtdEstoque(qtd);
                 prod.setStatus(status);
-                prod.setImagemPrincipal(imagem.toString());
+                prod.setImagemPrincipal(imagePath);
                 prods.add(prod);
             }
             System.out.println("success in select * from user");
