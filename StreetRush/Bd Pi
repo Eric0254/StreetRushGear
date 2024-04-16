@@ -26,3 +26,36 @@ CREATE TABLE IF NOT EXISTS imagens_produto (
     imagem BLOB NOT NULL,
     FOREIGN KEY (produto_id) REFERENCES produtos(id)
 );
+CREATE TABLE Cliente (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) UNIQUE NOT NULL,
+    CPF VARCHAR(14) UNIQUE NOT NULL,
+    Senha VARCHAR(255) NOT NULL,
+    Nascimento DATE NOT NULL,
+    Genero VARCHAR(50) NOT NULL
+);
+CREATE TABLE EnderecoFaturamento (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Cliente_ID INT,
+    FOREIGN KEY (Cliente_ID) REFERENCES Cliente(ID),
+    CEP VARCHAR(9) NOT NULL,
+    Logradouro VARCHAR(255) NOT NULL,
+    Numero VARCHAR(50) NOT NULL,
+    Complemento VARCHAR(255),
+    Bairro VARCHAR(100) NOT NULL,
+    Cidade VARCHAR(100) NOT NULL,
+    UF VARCHAR(2) NOT NULL
+);
+CREATE TABLE EnderecoEntrega (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Cliente_ID INT,
+    FOREIGN KEY (Cliente_ID) REFERENCES Cliente(ID),
+    CEP VARCHAR(9) NOT NULL,
+    Logradouro VARCHAR(255) NOT NULL,
+    Numero VARCHAR(50) NOT NULL,
+    Complemento VARCHAR(255),
+    Bairro VARCHAR(100) NOT NULL,
+    Cidade VARCHAR(100) NOT NULL,
+    UF VARCHAR(2) NOT NULL
+);
