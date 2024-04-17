@@ -1,7 +1,8 @@
 document.getElementById('enderecoEntregaBtn').addEventListener('click', function() {
     const enderecoEntregaContainer = document.getElementById('enderecoEntregaContainer');
-    enderecoEntregaContainer.classList.remove('hidden');
-    enderecoEntregaContainer.innerHTML = ''; // Limpa o conteúdo anterior
+
+    // Cria um novo conjunto de campos de entrega
+    const novoConjunto = document.createElement('div');
 
     const camposEntrega = ['logradouro', 'numero', 'complemento', 'bairro', 'cidade', 'uf'];
 
@@ -20,12 +21,27 @@ document.getElementById('enderecoEntregaBtn').addEventListener('click', function
         input.required = true;
         novoCampo.appendChild(input);
 
-        enderecoEntregaContainer.appendChild(novoCampo);
+        novoConjunto.appendChild(novoCampo);
     });
+
+    // Adiciona o botão de exclusão ao conjunto
+    const botaoExcluir = document.createElement('button');
+    botaoExcluir.textContent = 'Excluir';
+    botaoExcluir.type = 'button';
+    botaoExcluir.classList.add('excluir-campo');
+    botaoExcluir.addEventListener('click', function() {
+        novoConjunto.remove(); // Remove o conjunto inteiro quando o botão de exclusão é clicado
+    });
+    novoConjunto.appendChild(botaoExcluir);
+
+    enderecoEntregaContainer.appendChild(novoConjunto);
 });
 
 document.getElementById('cadastroForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    // Lógica de envio do formulário
-    console.log('Formulário enviado!');
+
+    // Aqui você pode adicionar o código para lidar com a submissão do formulário
+    // Por exemplo, você pode coletar os dados do formulário e enviá-los para um servidor
+
+    console.log('Formulário submetido');
 });
