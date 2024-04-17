@@ -20,7 +20,7 @@ public class LoginUsuarioServlet extends HttpServlet {
         String senha = request.getParameter("senha");
 
         ClienteDao clienteDao = new ClienteDao();
-        usuario cliente = clienteDao.obterclientePorEmailSenha(email,senha);
+        Cliente cliente = clienteDao.obterClientePorEmailSenha(email,senha);
 
         usuarioDao usuarioDao = new usuarioDao();
         usuario usuario = usuarioDao.obterusuarioPorEmailSenha(email, senha);

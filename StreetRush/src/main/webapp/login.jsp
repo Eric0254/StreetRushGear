@@ -14,7 +14,7 @@
 
 <div class="container" id="container">
     <div class="form-container sign-up">
-        <form action="/create-user" method="post">
+        <form action="/cadastrarCliente" method="post">
             <h1>Criar uma conta</h1>
             <input type="text" name="nome" placeholder="Nome" required>
             <input type="email" name="email" placeholder="Email" required>

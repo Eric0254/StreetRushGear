@@ -1,80 +1,80 @@
 package model;
 
 public class EnderecoFaturamento {
-    private String Cep;
-    private String Logradouro;
-    private String Numero;
-    private String Complemento;
-    private String Bairro;
-    private String Cidade;
-    private String UF;
+    private String cep;
+    private String logradouro;
+    private String numero;
+    private String complemento;
+    private String bairro;
+    private String cidade;
+    private String uf;
 
     public EnderecoFaturamento() {
     }
 
-    public EnderecoFaturamento(String cep, String logradouro, String numero, String complemento, String bairro, String cidade, String UF) {
-        Cep = cep;
-        Logradouro = logradouro;
-        Numero = numero;
-        Complemento = complemento;
-        Bairro = bairro;
-        Cidade = cidade;
-        this.UF = UF;
+    public EnderecoFaturamento(String cep, String logradouro, String numero, String complemento, String bairro, String cidade, String uf) {
+        this.cep = cep;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.uf = uf;
     }
 
     public String getCep() {
-        return Cep;
+        return cep;
     }
 
     public void setCep(String cep) {
-        Cep = cep;
+        cep = cep;
     }
 
     public String getLogradouro() {
-        return Logradouro;
+        return logradouro;
     }
 
     public void setLogradouro(String logradouro) {
-        Logradouro = logradouro;
+        logradouro = logradouro;
     }
 
     public String getNumero() {
-        return Numero;
+        return numero;
     }
 
     public void setNumero(String numero) {
-        Numero = numero;
+        numero = numero;
     }
 
     public String getComplemento() {
-        return Complemento;
+        return complemento;
     }
 
     public void setComplemento(String complemento) {
-        Complemento = complemento;
+        complemento = complemento;
     }
 
     public String getBairro() {
-        return Bairro;
+        return bairro;
     }
 
     public void setBairro(String bairro) {
-        Bairro = bairro;
+        bairro = bairro;
     }
 
     public String getCidade() {
-        return Cidade;
+        return cidade;
     }
 
     public void setCidade(String cidade) {
-        Cidade = cidade;
+        cidade = cidade;
     }
 
     public String getUF() {
-        return UF;
+        return uf;
     }
 
     public void setUF(String UF) {
-        this.UF = UF;
+        this.uf = UF;
     }
 }
