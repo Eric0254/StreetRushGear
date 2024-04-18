@@ -64,7 +64,7 @@ public class CadastrarClienteServlet extends HttpServlet {
 
         boolean sucesso = clienteDao.inserirCliente(cliente, enderecoFaturamento);
         if (sucesso) {
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("login.jsp");
         } else {
             response.sendRedirect("erro.jsp");
         }
