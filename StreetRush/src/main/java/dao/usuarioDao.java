@@ -40,11 +40,11 @@ public class usuarioDao {
         return false;
     }
 
-    public usuario obterusuarioPorEmailSenha(String email, String senha) {
+    public usuario obterusuarioPorEmailSenha(String email, String senhaCriptografada) {
         String sql = "SELECT * FROM Usuarios WHERE Email = ? AND Senha = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, email);
-            preparedStatement.setString(2, senha);
+            preparedStatement.setString(2, senhaCriptografada);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 

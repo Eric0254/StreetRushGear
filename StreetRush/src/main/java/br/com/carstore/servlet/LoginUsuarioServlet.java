@@ -4,6 +4,7 @@ import dao.usuarioDao;
 import model.usuario;
 import dao.ClienteDao;
 import model.Cliente;
+import security.Password;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +20,13 @@ public class LoginUsuarioServlet extends HttpServlet {
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
 
+        String senhaCriptografada = Password.hashPassword(senha);
+
         ClienteDao clienteDao = new ClienteDao();
-        Cliente cliente = clienteDao.obterClientePorEmailSenha(email,senha);
+        Cliente cliente = clienteDao.obterClientePorEmailSenha(email,senhaCriptografada);
 
         usuarioDao usuarioDao = new usuarioDao();
-        usuario usuario = usuarioDao.obterusuarioPorEmailSenha(email, senha);
+        usuario usuario = usuarioDao.obterusuarioPorEmailSenha(email, senhaCriptografada);
 
         if (usuario != null) {
             HttpSession session = request.getSession();
