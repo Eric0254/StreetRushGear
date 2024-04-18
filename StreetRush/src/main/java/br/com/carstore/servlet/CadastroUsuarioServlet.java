@@ -1,6 +1,7 @@
 package br.com.carstore.servlet;
 import model.usuario;
 import dao.usuarioDao;
+import security.Password;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,6 @@ import java.io.IOException;
 public class CadastroUsuarioServlet extends HttpServlet {
  @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Obtenha os parâmetros do formulário
         int id = 0;
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
@@ -22,24 +22,24 @@ public class CadastroUsuarioServlet extends HttpServlet {
         String cargo = request.getParameter("cargo");
         String status = "Ativo";
 
-         // Verificar novamente se as senhas coincidem
          if (!senha.equals(confirmarSenha)) {
-             response.sendRedirect("cadastroErro.jsp"); // Página de erro
+             response.sendRedirect("cadastroErro.jsp");
              return;
          }
 
-        // Crie um objeto Usuario com os parâmetros recebidos
-        usuario usuario = new usuario(id, nome, email, cpf, senha, confirmarSenha, cargo, status);
+         String senhaCriptografada = Password.hashPassword(senha);
+         String confirmarSenhaCriptografada = Password.hashPassword(confirmarSenha);
 
-        // Insira o usuário no banco de dados
-        usuarioDao  usuarioDao = new usuarioDao(); // Certifique-se de ter a lógica para obter a conexão
+        usuario usuario = new usuario(id, nome, email, cpf, senhaCriptografada, confirmarSenhaCriptografada, cargo, status);
+
+        usuarioDao  usuarioDao = new usuarioDao();
         boolean sucesso = usuarioDao.inserirUsuario(usuario);
 
-        // Redirecione para uma página de sucesso ou erro com base no resultado da inserção
+
         if (sucesso) {
-            response.sendRedirect("login.jsp"); // Página de sucesso
+            response.sendRedirect("login.jsp");
         } else {
-            response.sendRedirect("cadastroErro.jsp"); // Página de erro
+            response.sendRedirect("cadastroErro.jsp");
         }
     }
 }

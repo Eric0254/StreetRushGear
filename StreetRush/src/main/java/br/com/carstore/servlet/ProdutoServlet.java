@@ -46,7 +46,7 @@ public class ProdutoServlet extends HttpServlet {
 
     private List<String> uploadImages(HttpServletRequest request, List<Part> parts) throws IOException, ServletException {
         List<String> imagens = new ArrayList<>();
-        String uploadDir = "C:\\Users\\SoccerGrass\\Documents\\GitHub\\StreetRushGear\\StreetRush\\src\\main\\webapp\\img";
+        String uploadDir = "C:\\Users\\Gabriel\\Documents\\GitHub\\StreetRushGear\\StreetRush\\src\\main\\webapp\\img";
         // Diretório onde as imagens serão salvas
 
         for (Part part : parts) {

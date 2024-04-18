@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <html lang="pt-br">
 
 <head>
@@ -13,13 +14,25 @@
 
 <div class="container" id="container">
     <div class="form-container sign-up">
-        <form action="/create-user" method="post">
+        <form action="/cadastrarCliente" method="post">
             <h1>Criar uma conta</h1>
             <input type="text" name="nome" placeholder="Nome" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="text" id="cpf" name="cpf" placeholder="Cpf" maxlength="14" oninput="formatarCpf(this)" required>
+            <input type="text" name="nascimento" placeholder="Nascimento" required>
             <input type="password" name="senha" placeholder="Senha" required>
-            <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" required>
+            <label for="genero">Genero:</label>
+            <select class="form-control" id="genero" name="genero" required>
+                <option value="Masc">Masculino</option>
+                <option value="Fem">Feminino</option>
+            </select>
+            <input type="text" id="cep" name="cep" placeholder="Cep" required>
+            <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" required>
+            <input type="text" name="numero" placeholder="Numero" required>
+            <input type="text" id="comple" name="complemento" placeholder="Complemento" required>
+            <input type="text" id="bairro" name="bairro" placeholder="Bairro" required>
+            <input type="text" id="cidade" name="cidade" placeholder="Cidade" required>
+            <input type="text" id="uf" name="uf" placeholder="UF" required>
             <button type="submit">Inscrever-se</button>
         </form>
     </div>
@@ -67,6 +80,26 @@
         }
         campo.value = valor;
     }
+</script>
+<script>
+    $(document).ready(function() {
+        $("#cep").on("blur", function() {
+            var cep = $(this).val().replace(/\D/g, '');
+            if (cep !== "") {
+                $.getJSON("https://viacep.com.br/ws/" + cep + "/json/", function(data) {
+                    if (!("erro" in data)) {
+                        $("#logradouro").val(data.logradouro);
+                        $("#complemento").val(data.complemento);
+                        $("#bairro").val(data.bairro);
+                        $("#cidade").val(data.localidade);
+                        $("#uf").val(data.uf);
+                    } else {
+                        alert("CEP não encontrado.");
+                    }
+                });
+            }
+        });
+    });
 </script>
 </body>
 

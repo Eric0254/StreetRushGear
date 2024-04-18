@@ -28,10 +28,11 @@ public class displayPage extends HttpServlet {
         for (int i = 0; i < products.size(); i++) {
             Produto product = products.get(i);
             out.print("{");
+            out.print("\"id\":\"" + product.getId() + "\",");
             out.print("\"name\":\"" + product.getNome() + "\",");
             out.print("\"descricao\":\"" + product.getDescricao() + "\",");
             out.print("\"price\":" + product.getPreco() + ",");
-            out.print("\"imgurl\":\"" + product.getImagemPrincipal() + "\"");
+            out.print("\"imgurl\":\"" + req.getContextPath() + "/img/" + product.getImagemPrincipal() + "\"");
             out.print("}");
             if (i < products.size() - 1) {
                 out.print(",");
