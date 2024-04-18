@@ -51,6 +51,7 @@ public class usuarioDao {
 
             if (resultSet.next()) {
                 usuario usuario = new usuario();
+                usuario.setId(resultSet.getInt("id"));
                 usuario.setNome(resultSet.getString("Nome"));
                 usuario.setEmail(resultSet.getString("Email"));
                 usuario.setCpf(resultSet.getString("CPF"));

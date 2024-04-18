@@ -1,4 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- nova_pagina.jsp -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,9 +33,16 @@
             <div>
                 CPF: <input type="text" name="cpf" value="${param.cpf}">
             </div>
+            <c:if test="${sessionScope.usuarioLogado.id == param.id}">
             <div>
+                Cargo: <input type="text" name="cargo" id="cargo" value="${param.cargo}" readonly>
+                </div>
+            </c:if>
+            <c:if test="${sessionScope.usuarioLogado.id != param.id}">
+                <div>
                 Cargo: <input type="text" name="cargo" id="cargo" value="${param.cargo}">
                 </div>
+            </c:if>
             <div>
                 Senha: <input type="text" name="senha" value="${param.senha}">
             </div>

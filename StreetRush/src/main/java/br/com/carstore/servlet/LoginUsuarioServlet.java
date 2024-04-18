@@ -31,7 +31,7 @@ public class LoginUsuarioServlet extends HttpServlet {
         if (usuario != null) {
             HttpSession session = request.getSession();
             session.setAttribute("usuarioLogado", usuario);
-            System.out.println("Sessão criada com sucesso. Usuário logado: " + usuario.getEmail()+usuario.getCargo());
+            System.out.println("Sessão criada com sucesso. Usuário logado: " + usuario.getId());
 
 
             response.sendRedirect("ADM.jsp");
