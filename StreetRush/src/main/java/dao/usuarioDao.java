@@ -1,6 +1,7 @@
 package dao;
 
 import model.usuario;
+import security.Password;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

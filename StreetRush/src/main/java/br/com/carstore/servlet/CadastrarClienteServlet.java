@@ -3,6 +3,7 @@ package br.com.carstore.servlet;
 import dao.ClienteDao;
 import model.Cliente;
 import model.EnderecoFaturamento;
+import security.Password;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,8 +57,9 @@ public class CadastrarClienteServlet extends HttpServlet {
         String cidade = request.getParameter("cidade");
         String uf = request.getParameter("uf");
 
+        String senhaCriptografada = Password.hashPassword(senha);
 
-        Cliente cliente = new Cliente(id, nome, email, cpf, senha, nascimento, genero);
+        Cliente cliente = new Cliente(id, nome, email, cpf, senhaCriptografada, nascimento, genero);
         EnderecoFaturamento enderecoFaturamento = new EnderecoFaturamento(cep, logradouro, numero, complemento, bairro, cidade, uf);
 
         boolean sucesso = clienteDao.inserirCliente(cliente, enderecoFaturamento);
