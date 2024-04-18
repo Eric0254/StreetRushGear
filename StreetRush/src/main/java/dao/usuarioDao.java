@@ -1,6 +1,7 @@
 package dao;
 
 import model.usuario;
+import security.Password;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -40,16 +41,17 @@ public class usuarioDao {
         return false;
     }
 
-    public usuario obterusuarioPorEmailSenha(String email, String senha) {
+    public usuario obterusuarioPorEmailSenha(String email, String senhaCriptografada) {
         String sql = "SELECT * FROM Usuarios WHERE Email = ? AND Senha = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, email);
-            preparedStatement.setString(2, senha);
+            preparedStatement.setString(2, senhaCriptografada);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 usuario usuario = new usuario();
+                usuario.setId(resultSet.getInt("id"));
                 usuario.setNome(resultSet.getString("Nome"));
                 usuario.setEmail(resultSet.getString("Email"));
                 usuario.setCpf(resultSet.getString("CPF"));

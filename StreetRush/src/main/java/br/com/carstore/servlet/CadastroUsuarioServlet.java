@@ -1,6 +1,7 @@
 package br.com.carstore.servlet;
 import model.usuario;
 import dao.usuarioDao;
+import security.Password;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,10 @@ public class CadastroUsuarioServlet extends HttpServlet {
              return;
          }
 
-        usuario usuario = new usuario(id, nome, email, cpf, senha, confirmarSenha, cargo, status);
+         String senhaCriptografada = Password.hashPassword(senha);
+         String confirmarSenhaCriptografada = Password.hashPassword(confirmarSenha);
+
+        usuario usuario = new usuario(id, nome, email, cpf, senhaCriptografada, confirmarSenhaCriptografada, cargo, status);
 
         usuarioDao  usuarioDao = new usuarioDao();
         boolean sucesso = usuarioDao.inserirUsuario(usuario);

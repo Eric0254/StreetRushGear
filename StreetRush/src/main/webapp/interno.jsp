@@ -21,7 +21,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.jsp">
             <img src="img/Logo.jpg" alt="Logo" style="max-height: 60px;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -67,6 +67,7 @@
         </div>
     </div>
 </nav>
+<br><br><br><br>
 <div class="product-container">
     <img src="caminho-da-imagem.jpg" alt="Produto" id="card-img">
     <div class="product-details">

@@ -2,6 +2,7 @@ package br.com.carstore.servlet;
 
 import dao.usuarioDao;
 import model.usuario;
+import security.Password;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,9 +24,11 @@ import java.io.IOException;
             String confirmarSenha = request.getParameter("confirmarSenha");
             String status = request.getParameter("status");
 
+            String senhaCriptografada = Password.hashPassword(senha);
+            String confirmarSenhaCriptografada = Password.hashPassword((confirmarSenha));
 
             usuarioDao usuariodao = new usuarioDao();
-            usuario user = new usuario(id, nome, email,cpf,senha, confirmarSenha, cargo, status);
+            usuario user = new usuario(id, nome, email,cpf,senhaCriptografada, confirmarSenhaCriptografada, cargo, status);
 
             usuariodao.updateProfile(user);
 
