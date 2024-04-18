@@ -315,7 +315,7 @@ footer {
 
 /* Imagem do produto */
 #card-img {
-    width: 800px;
+    width: 500px;
     border: 1px solid black; /* Borda preta de 1px */
     margin-right: 20px;
 }

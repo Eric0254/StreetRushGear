@@ -2,9 +2,10 @@ package dao;
 
 import model.Cliente;
 import model.EnderecoFaturamento;
-import model.usuario;
+
 
 import java.sql.*;
+
 
 public class ClienteDao {
     private Connection connection;
@@ -60,7 +61,7 @@ public class ClienteDao {
         return false;
     }
     public Cliente obterClientePorEmailSenha(String email, String senha) {
-        String sql = "SELECT * FROM Clientes WHERE Email = ? AND Senha = ?";
+        String sql = "SELECT * FROM Cliente WHERE Email = ? AND Senha = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, senha);
@@ -85,4 +86,28 @@ public class ClienteDao {
         return null;
     }
 
+    public Cliente obterClientePorEmail(String email) {
+        String sql = "SELECT * FROM Cliente WHERE Email = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, email);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setId(resultSet.getInt("id"));
+                cliente.setNome(resultSet.getString("nome"));
+                cliente.setEmail(resultSet.getString("email"));
+                cliente.setCpf(resultSet.getString("cpf"));
+                cliente.setSenha(resultSet.getString("senha"));
+                cliente.setNascimento(resultSet.getString("nascimento"));
+                cliente.setGenero(resultSet.getString("genero"));
+                return cliente;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Erro ao obter cliente por e-mail do banco de dados: " + e.getMessage());
+        }
+        return null;
+    }
 }

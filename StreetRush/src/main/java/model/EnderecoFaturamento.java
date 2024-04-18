@@ -27,7 +27,7 @@ public class EnderecoFaturamento {
     }
 
     public void setCep(String cep) {
-        cep = cep;
+        this.cep = cep;
     }
 
     public String getLogradouro() {

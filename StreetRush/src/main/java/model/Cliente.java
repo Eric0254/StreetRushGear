@@ -59,7 +59,7 @@ public class Cliente {
     }
 
     public void setSenha(String senha) {
-        senha = senha;
+        this.senha = senha;
     }
 
     public String getNascimento() {

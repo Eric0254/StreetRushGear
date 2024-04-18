@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -52,31 +53,48 @@
                 </li>
             </ul>
 
-            <!-- Itens de Login, Cadastro e Carrinho -->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <form class="d-flex" role="search">
-                        <p class="nav-link" style="font-size: 0.7rem;">
-                            Faça Seu
-                            <a href="login.jsp" class="text-muted">
-                                <span>Login</span>
-                            </a>
-                            <br>
-                            Ou
-                            <a href="login.jsp" class="text-muted">
-                                <span>Cadastre-se</span>
-                            </a>
-                            em nosso site
-                        </p>
+                <c:if test="${sessionScope.usuarioLogado != null or sessionScope.clienteLogado != null}">
+                    <div class="dropdown">
+                        <button class="btn btn-dark" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bem-vindo, ${sessionScope.ClienteLogado.nome}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="Perfil.jsp">Perfil</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            <!-- Adicione mais opções se necessário (por exemplo, para usuários administradores) -->
+                        </ul>
+                    </div>
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-shopping-cart"></i> <!-- Ícone de carrinho -->
                         </a>
-                    </form>
-                </li>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.usuarioLogado == null and sessionScope.clienteLogado == null}">
+                    <!-- Se usuário ou cliente NÃO logado -->
+                    <li class="nav-item">
+                        <form class="d-flex" role="search">
+                            <p class="nav-link" style="font-size: 0.7rem;">
+                                Faça Seu
+                                <a href="login.jsp" class="text-muted">
+                                    <span>Login</span>
+                                </a>
+                                <br>
+                                Ou
+                                <a href="login.jsp" class="text-muted">
+                                    <span>Cadastre-se</span>
+                                </a>
+                                em nosso site
+                            </p>
+                        </form>
+                    </li>
+                </c:if>
             </ul>
         </div>
     </div>
 </nav>
+
 
 
 

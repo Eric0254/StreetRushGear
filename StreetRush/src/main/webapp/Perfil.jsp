@@ -1,10 +1,11 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!DOCTYPE html>
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Importando CSS e JavaScript -->
-    <!--===============================================================================================-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!--===============================================================================================-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,7 +17,49 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" href="Csstela.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>StreetRushGear</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #222;
+            padding: 10px;
+            text-align: left;
+        }
+        .navbar h1 {
+            color: red;
+            font-size: 18px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .profile-section {
+            background-color: #444;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 40px;
+        }
+        .profile-section h2, .profile-section p {
+            margin: 0;
+        }
+        .profile-section button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .profile-section button:hover {
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -61,7 +104,6 @@
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.usuarioLogado == null and sessionScope.clienteLogado == null}">
-                    <!-- Se usuário ou cliente NÃO logado -->
                     <li class="nav-item">
                         <form class="d-flex" role="search">
                             <p class="nav-link" style="font-size: 0.7rem;">
@@ -83,74 +125,39 @@
         </div>
     </div>
 </nav>
-<br><br><br><br>
-<div class="product-container">
-    <img src="caminho-da-imagem.jpg" alt="Produto" id="card-img">
-    <div class="product-details">
-        <p id="card-name">Nome do Produto</p>
-        <h3 style="display: inline-block;">R$</h3> <p id="card-price" style="display: inline-block;">Preço do Produto</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="profile-section">
+        <h2>Minha Conta</h2>
+        <p>Informações de Acesso</p>
+        <p>Nome do Usuário: </p>
         <p></p>
-        <button id="botao">Comprar</button>
-        <h3>Descrição</h3><p id="card-description">Descrição do Produto</p>
+        <a href="cadastroCliente.jsp" class="btn btn-danger">EDITAR</a>
+        <a href="" class="btn btn-danger">Adcionar Endereço de Entrega</a>
     </div>
-</div>
-<div class="container-fluid bg-white text-dark py-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>Links Úteis</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-dark">Sobre Nós</a></li>
-                    <li><a href="#" class="text-dark">Produtos</a></li>
-                    <li><a href="#" class="text-dark">Contato</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>Redes Sociais</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-dark">Facebook</a></li>
-                    <li><a href="#" class="text-dark">Twitter</a></li>
-                    <li><a href="#" class="text-dark">Instagram</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>Contato</h5>
-                <address>
-                    Endereço: Rua Exemplo, 123<br>
-                    Cidade Exemplo - Estado<br>
-                    Telefone: (11) 1234-5678<br>
-                    Email: contato@exemplo.com
-                </address>
-            </div>
-        </div>
+
+    <div class="profile-section">
+        <h2>Endereços Cadastrados</h2>
+        <p>GERENCIAR ENDEREÇOS</p>
+        <p>Endereço de Cobrança Padrão</p>
+        <p></p>
+        <p></p>
+        <p>Tel: (00) 0000-0000</p>
     </div>
+
+
+    <div class="profile-section">
+        <h2>Meus Pedidos</h2>
+        <p>VER TODOS</p>
+        <p>Você não fez nenhum pedido ainda.</p>
+    </div>
+
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const cardImgElement = document.getElementById("card-img");
-        const cardDescriptionElement = document.getElementById("card-description");
-        const cardPriceElement = document.getElementById("card-price");
-        const cardNameElement = document.getElementById("card-name");
 
-        if (urlParams.has("imgurl")) {
-            cardImgElement.src = urlParams.get("imgurl");
-        }
-
-        if (urlParams.has("description")) {
-            cardDescriptionElement.textContent = urlParams.get("description");
-        }
-
-        if (urlParams.has("price")) { // Verifique se o parâmetro 'price' existe
-            cardPriceElement.textContent = urlParams.get("price"); // Exiba o preço
-        }
-        if (urlParams.has("name")) {
-            cardNameElement.textContent = urlParams.get("name");
-        }
-
-    });
-</script>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
 </html>
