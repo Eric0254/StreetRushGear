@@ -32,7 +32,7 @@ CREATE TABLE Cliente (
     Email VARCHAR(255) UNIQUE NOT NULL,
     CPF VARCHAR(14) UNIQUE NOT NULL,
     Senha VARCHAR(255) NOT NULL,
-    Nascimento DATE NOT NULL,
+    Nascimento VARCHAR(50) NOT NULL,
     Genero VARCHAR(50) NOT NULL
 );
 CREATE TABLE EnderecoFaturamento (
