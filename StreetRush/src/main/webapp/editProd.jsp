@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Editar Produto</title>
 <link rel="stylesheet" href="styleCadastroProduto.css">
+
+<script>
+    window.onload = function() {
+        var cargoUsuario = "${sessionScope.usuarioLogado.cargo}";
+
+        if (cargoUsuario === "estoquista") {
+            var campos = document.querySelectorAll('input, select, textarea');
+            campos.forEach(function(campo) {
+                campo.setAttribute('readonly', 'readonly');
+            });
+
+            document.getElementById('productStock').removeAttribute('readonly');
+        }
+    };
+
+</script>
 </head>
 <body>
     <h1>Editar Produto</h1>
