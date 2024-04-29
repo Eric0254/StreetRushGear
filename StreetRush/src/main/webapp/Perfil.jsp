@@ -94,7 +94,6 @@
                         <ul class="dropdown-menu" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="Perfil.jsp">Perfil</a></li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                            <!-- Adicione mais opções se necessário (por exemplo, para usuários administradores) -->
                         </ul>
                     </div>
                     <li class="nav-item">
