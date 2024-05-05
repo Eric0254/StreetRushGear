@@ -20,4 +20,15 @@
     <url-pattern>/console/*</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>EnderecoEntregaServlet</servlet-name>
+    <servlet-class>br.com.carstore.servlet.EnderecoEntregaServlet</servlet-class>
+  </servlet>
+
+  <!-- Mapeamento do URL para o servlet -->
+  <servlet-mapping>
+    <servlet-name>EnderecoEntregaServlet</servlet-name>
+    <url-pattern>/adicionar-endereco-entrega</url-pattern>
+  </servlet-mapping>
+
 </web-app>

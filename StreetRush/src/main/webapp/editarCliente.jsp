@@ -4,12 +4,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastro de Cliente</title>
+        <title>Editar cadastro</title>
         <link rel="stylesheet" href="styleCadastroCliente.css">
     </head>
     <body>
     <div class="container">
-        <h2 class="titulo">Cadastro de Cliente</h2>
+        <h2 class="titulo">Editar Cadastro</h2>
         <div class="content">
             <div class="faturamento">
                 <!-- Campos de faturamento -->
@@ -56,12 +56,6 @@
                 </div>
                 <!-- ... -->
             </div>
-            <div class="entrega">
-                <button type="button" id="enderecoEntregaBtn">Adicionar Endereço de Entrega</button>
-                <div id="enderecoEntregaContainer">
-                    <!-- Os campos de endereço de entrega serão adicionados aqui dinamicamente -->
-                </div>
-            </div>
         </div>
         <form id="cadastroForm">
             <!-- Restante do formulário aqui -->
@@ -69,6 +63,5 @@
         </form>
     </div>
 
-    <script src="scriptCadastroCliente.js"></script>
     </body>
     </html>

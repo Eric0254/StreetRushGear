@@ -1,6 +1,7 @@
 package dao;
 
 import model.Cliente;
+import model.EnderecoEntrega;
 import model.EnderecoFaturamento;
 
 
@@ -60,6 +61,32 @@ public class ClienteDao {
         }
         return false;
     }
+
+
+    public boolean adicionarEnderecoEntrega(int clienteId, EnderecoEntrega enderecoEntrega) {
+        String sql = "INSERT INTO EnderecoEntrega (Cliente_ID, CEP, Logradouro, Numero, Complemento, Bairro, Cidade, UF) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, clienteId);
+            preparedStatement.setString(2, enderecoEntrega.getCep());
+            preparedStatement.setString(3, enderecoEntrega.getLogradouro());
+            preparedStatement.setString(4, enderecoEntrega.getNumero());
+            preparedStatement.setString(5, enderecoEntrega.getComplemento());
+            preparedStatement.setString(6, enderecoEntrega.getBairro());
+            preparedStatement.setString(7, enderecoEntrega.getCidade());
+            preparedStatement.setString(8, enderecoEntrega.getUF());
+
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Erro ao adicionar endereço de entrega no banco de dados: " + e.getMessage());
+        }
+        return false;
+    }
+
+
+
     public Cliente obterClientePorEmailSenha(String email, String senha) {
         String sql = "SELECT * FROM Cliente WHERE Email = ? AND Senha = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {

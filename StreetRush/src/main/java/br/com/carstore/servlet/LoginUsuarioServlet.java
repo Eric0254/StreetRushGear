@@ -38,6 +38,7 @@ public class LoginUsuarioServlet extends HttpServlet {
 
         } else if(cliente != null){
             HttpSession session = request.getSession();
+            session.setAttribute("clienteId", cliente.getId());
             session.setAttribute("clienteLogado", cliente);
             System.out.println("Sessão criada com sucesso. Cliente logado: " + cliente.getEmail()+cliente.getNome());
 

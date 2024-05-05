@@ -89,7 +89,7 @@
                 <c:if test="${sessionScope.usuarioLogado != null or sessionScope.clienteLogado != null}">
                     <div class="dropdown">
                         <button class="btn btn-dark" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Bem-vindo, ${sessionScope.ClienteLogado.nome}
+                            Bem-vindo, ${sessionScope.clienteLogado.nome}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="Perfil.jsp">Perfil</a></li>
@@ -130,14 +130,14 @@
 <br>
 <br>
 <br>
+<c:if test="${sessionScope.clienteLogado != null}">
 <div class="container">
     <div class="profile-section">
         <h2>Minha Conta</h2>
         <p>Informações de Acesso</p>
-        <p>Nome do Usuário: </p>
-        <p></p>
-        <a href="cadastroCliente.jsp" class="btn btn-danger">EDITAR</a>
-        <a href="" class="btn btn-danger">Adcionar Endereço de Entrega</a>
+        <p>Nome do Usuário: ${clienteLogado.nome}</p> <!-- Alteração aqui -->
+        <a href="editarCliente.jsp" class="btn btn-danger">EDITAR</a>
+        <a href="AddEndereco.jsp" class="btn btn-danger">Adcionar Endereço de Entrega</a>
     </div>
 
     <div class="profile-section">
@@ -155,8 +155,8 @@
         <p>VER TODOS</p>
         <p>Você não fez nenhum pedido ainda.</p>
     </div>
-
 </div>
+</c:if>
 
 </body>
 </html>
