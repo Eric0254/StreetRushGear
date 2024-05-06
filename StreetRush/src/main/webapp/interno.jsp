@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -21,7 +22,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.jsp">
             <img src="img/Logo.jpg" alt="Logo" style="max-height: 60px;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -55,7 +56,7 @@
                         </ul>
                     </div>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="Carrinho.jsp" class="nav-link">
                             <i class="fas fa-shopping-cart"></i> <!-- Ícone de carrinho -->
                         </a>
                     </li>
@@ -90,7 +91,7 @@
         <p id="card-name">Nome do Produto</p>
         <h3 style="display: inline-block;">R$</h3> <p id="card-price" style="display: inline-block;">Preço do Produto</p>
         <p></p>
-        <button id="botao">Comprar</button>
+        <button class="botao-comprar">Comprar</button>
         <h3>Descrição</h3><p id="card-description">Descrição do Produto</p>
     </div>
 </div>
@@ -127,6 +128,8 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        const botaoComprar = document.querySelector(".botao-comprar");
+        botaoComprar.addEventListener("click", adicionarAoCarrinho);
         const urlParams = new URLSearchParams(window.location.search);
         const cardImgElement = document.getElementById("card-img");
         const cardDescriptionElement = document.getElementById("card-description");
@@ -148,7 +151,36 @@
             cardNameElement.textContent = urlParams.get("name");
         }
 
+        function adicionarAoCarrinho() {
+            const cardImgElement = document.getElementById("card-img");
+            const cardDescriptionElement = document.getElementById("card-description");
+            const cardPriceElement = document.getElementById("card-price");
+            const cardNameElement = document.getElementById("card-name");
+
+            const itemImgUrl = cardImgElement.src;
+            const itemDescription = cardDescriptionElement.textContent;
+            const itemPrice = cardPriceElement.textContent;
+            const itemName = cardNameElement.textContent;
+
+            const item = {
+                name: itemName,
+                description: itemDescription,
+                price: itemPrice,
+                imageUrl: itemImgUrl
+            };
+
+            adicionarItemAoCarrinho(item);
+        }
+
+        function adicionarItemAoCarrinho(item) {
+            let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            carrinho.push(item);
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            alert("Item adicionado ao carrinho!");
+        }
+
     });
+
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
