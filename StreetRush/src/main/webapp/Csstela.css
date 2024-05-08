@@ -371,3 +371,45 @@ footer {
 #botao{
     margin-left: 20px;
 }
+
+.carrinho-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.carrinho-item img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.carrinho-item h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.carrinho-item p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.carrinho-item .remover-item {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carrinho-item .remover-item:hover {
+    background-color: #e0523a;
+}

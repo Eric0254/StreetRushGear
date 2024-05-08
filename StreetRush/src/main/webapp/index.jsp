@@ -65,11 +65,7 @@
                             <!-- Adicione mais opções se necessário (por exemplo, para usuários administradores) -->
                         </ul>
                     </div>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-shopping-cart"></i> <!-- Ícone de carrinho -->
-                        </a>
-                    </li>
+
                 </c:if>
                 <c:if test="${sessionScope.usuarioLogado == null and sessionScope.clienteLogado == null}">
                     <!-- Se usuário ou cliente NÃO logado -->
@@ -90,6 +86,11 @@
                         </form>
                     </li>
                 </c:if>
+                <li class="nav-item">
+                    <a href="Carrinho.jsp" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i> <!-- Ícone de carrinho -->
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
