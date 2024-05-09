@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -42,5 +43,25 @@
         </form>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $("#cep").on("blur", function() {
+            var cep = $(this).val().replace(/\D/g, '');
+            if (cep !== "") {
+                $.getJSON("https://viacep.com.br/ws/" + cep + "/json/", function(data) {
+                    if (!("erro" in data)) {
+                        $("#logradouro").val(data.logradouro);
+                        $("#complemento").val(data.complemento);
+                        $("#bairro").val(data.bairro);
+                        $("#cidade").val(data.localidade);
+                        $("#uf").val(data.uf);
+                    } else {
+                        alert("CEP não encontrado.");
+                    }
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>

@@ -10,20 +10,6 @@ import model.EnderecoEntrega;
 
 public class EnderecoEntregaServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer clienteId = (Integer) request.getSession().getAttribute("clienteId");
-
-        if (clienteId != null) {
-            ClienteDao clienteDao = new ClienteDao();
-            List<EnderecoEntrega> enderecosEntrega = clienteDao.listarEnderecosEntrega(clienteId);
-
-            request.setAttribute("enderecosEntrega", enderecosEntrega);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("Perfil.jsp");
-            dispatcher.forward(request, response);
-        } else {
-            response.sendRedirect("pagina-de-login.jsp");
-        }
-    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer clienteId = (Integer) request.getSession().getAttribute("clienteId");
 
