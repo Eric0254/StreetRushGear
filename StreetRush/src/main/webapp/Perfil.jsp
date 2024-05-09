@@ -143,10 +143,16 @@
     <div class="profile-section">
         <h2>Endereços Cadastrados</h2>
         <p>GERENCIAR ENDEREÇOS</p>
-        <p>Endereço de Cobrança Padrão</p>
-        <p></p>
-        <p></p>
-        <p>Tel: (00) 0000-0000</p>
+        <c:forEach var="endereco" items="${enderecosEntrega}">
+            <p>CEP: ${endereco.cep}</p>
+            <p>Logradouro: ${endereco.logradouro}</p>
+            <p>Número: ${endereco.numero}</p>
+            <p>Complemento: ${endereco.complemento}</p>
+            <p>Bairro: ${endereco.bairro}</p>
+            <p>Cidade: ${endereco.cidade}</p>
+            <p>UF: ${endereco.uf}</p>
+            <hr>
+        </c:forEach>
     </div>
 
 

@@ -47,7 +47,7 @@
                 <c:if test="${sessionScope.usuarioLogado != null or sessionScope.clienteLogado != null}">
                     <div class="dropdown">
                         <button class="btn btn-dark" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Bem-vindo, ${sessionScope.ClienteLogado.nome}
+                            Bem-vindo, ${sessionScope.clienteLogado.nome}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="Perfil.jsp">Perfil</a></li>

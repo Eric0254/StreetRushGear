@@ -98,6 +98,56 @@
 <div class="container">
     <h2>Seu Carrinho</h2>
     <div id="carrinho-items"></div>
+
+<c:if test="${sessionScope.usuarioLogado != null or sessionScope.clienteLogado != null}">
+    <div class="container mt-5">
+        <h2>Checkout</h2>
+        <form action="/AtualizarClienteServlet" method="post">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" class="form-control" id="name" placeholder="Digite seu nome">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+            </div>
+            <div class="form-group">
+                <label for="address">Endereço:</label>
+                <input type="text" class="form-control" id="address" placeholder="Digite seu endereço">
+            </div>
+            <div class="form-group">
+                <label for="city">Cidade:</label>
+                <input type="text" class="form-control" id="city" placeholder="Digite sua cidade">
+            </div>
+            <div class="form-group">
+                <label for="zipcode">CEP:</label>
+                <input type="text" class="form-control" id="zipcode" placeholder="Digite seu CEP">
+            </div>
+            <div id="formaPagamento" class="form-group">
+                <label>Forma de pagamento: </label>
+                <br>
+                <input type="radio" id="formaCredito" name="Forma" value="Credito" required checked onclick="desmarcarOutraOpcao('formaDebito')">
+                <label for="formaCredito">Crédito</label>
+                <input type="radio" id="formaDebito" name="Forma" value="Debito" onclick="desmarcarOutraOpcao('formaCredito')">
+                <label for="formaDebito">Débito</label>
+                <input type="radio" id="formaPix" name="Forma" value="Pix" onclick="desmarcarOutraOpcao('formaCredito')">
+                <label for="formaPix">Pix</label>
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary">Finalizar Compra</button>
+        </form>
+    </div>
+</c:if>
+<c:if test="${sessionScope.usuarioLogado == null and sessionScope.clienteLogado == null}">
+    <div class="container mt-5">
+        <h2>Calcular frete</h2>
+        <form action="/AtualizarClienteServlet" method="post">
+            <input type="text" id="cep" name="cep" placeholder="Cep" required>
+            <button type="submit" class="btn btn-primary">Calcular</button>
+        </form>
+    </div>
+</c:if>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="Carrinho.js"></script>
