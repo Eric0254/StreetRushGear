@@ -6,6 +6,10 @@ import model.EnderecoFaturamento;
 
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.sql.DriverManager.getConnection;
 
 
 public class ClienteDao {
@@ -13,7 +17,7 @@ public class ClienteDao {
 
     public ClienteDao() {
         try {
-            connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+            connection = getConnection("jdbc:h2:~/test", "sa", "sa");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -63,6 +67,45 @@ public class ClienteDao {
     }
 
 
+    public boolean atualizarCliente(Cliente cliente, EnderecoFaturamento enderecoFaturamento) {
+        String sqlCliente = "UPDATE Cliente SET Nome=?, CPF=?, Nascimento=?, Genero=? WHERE ID=?";
+        String sqlEndereco = "UPDATE EnderecoFaturamento SET CEP=?, Logradouro=?, Numero=?, Complemento=?, Bairro=?, Cidade=?, UF=? WHERE Cliente_ID=?";
+
+        try (PreparedStatement preparedStatementCliente = connection.prepareStatement(sqlCliente);
+             PreparedStatement preparedStatementEndereco = connection.prepareStatement(sqlEndereco)) {
+
+            preparedStatementCliente.setString(1, cliente.getNome());
+            preparedStatementCliente.setString(2, cliente.getCpf());
+            preparedStatementCliente.setString(3, cliente.getNascimento());
+            preparedStatementCliente.setString(4, cliente.getGenero());
+            preparedStatementCliente.setInt(5, cliente.getId());
+
+            int clienteUpdateCount = preparedStatementCliente.executeUpdate();
+
+            preparedStatementEndereco.setString(1, enderecoFaturamento.getCep());
+            preparedStatementEndereco.setString(2, enderecoFaturamento.getLogradouro());
+            preparedStatementEndereco.setString(3, enderecoFaturamento.getNumero());
+            preparedStatementEndereco.setString(4, enderecoFaturamento.getComplemento());
+            preparedStatementEndereco.setString(5, enderecoFaturamento.getBairro());
+            preparedStatementEndereco.setString(6, enderecoFaturamento.getCidade());
+            preparedStatementEndereco.setString(7, enderecoFaturamento.getUF());
+            preparedStatementEndereco.setInt(8, cliente.getId());
+
+            int enderecoUpdateCount = preparedStatementEndereco.executeUpdate();
+
+            return clienteUpdateCount > 0 && enderecoUpdateCount > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar cliente e endereço de faturamento no banco de dados: " + e.getMessage());
+            return false;
+        }
+    }
+
+
+
+
+
+
     public boolean adicionarEnderecoEntrega(int clienteId, EnderecoEntrega enderecoEntrega) {
         String sql = "INSERT INTO EnderecoEntrega (Cliente_ID, CEP, Logradouro, Numero, Complemento, Bairro, Cidade, UF) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -83,6 +126,35 @@ public class ClienteDao {
             System.err.println("Erro ao adicionar endereço de entrega no banco de dados: " + e.getMessage());
         }
         return false;
+    }
+
+
+    public List<EnderecoEntrega> listarEnderecosEntrega(int clienteId) {
+        List<EnderecoEntrega> enderecos = new ArrayList<>();
+        String sql = "SELECT * FROM EnderecoEntrega WHERE Cliente_ID = ?";
+
+        try (Connection connection = getConnection("jdbc:h2:~/test", "sa", "sa");
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, clienteId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String cep = resultSet.getString("CEP");
+                String logradouro = resultSet.getString("Logradouro");
+                String numero = resultSet.getString("Numero");
+                String complemento = resultSet.getString("Complemento");
+                String bairro = resultSet.getString("Bairro");
+                String cidade = resultSet.getString("Cidade");
+                String uf = resultSet.getString("UF");
+
+                EnderecoEntrega enderecoEntrega = new EnderecoEntrega(cep, logradouro, numero, complemento, bairro, cidade, uf);
+                enderecos.add(enderecoEntrega);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Erro ao listar endereços de entrega no banco de dados: " + e.getMessage());
+        }
+        return enderecos;
     }
 
 

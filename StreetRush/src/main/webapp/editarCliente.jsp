@@ -1,29 +1,30 @@
-    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
-    <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Editar cadastro</title>
-        <link rel="stylesheet" href="styleCadastroCliente.css">
-    </head>
-    <body>
-    <div class="container">
-        <h2 class="titulo">Editar Cadastro</h2>
-        <div class="content">
-            <div class="faturamento">
-                <!-- Campos de faturamento -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar cadastro</title>
+    <link rel="stylesheet" href="styleCadastroCliente.css">
+</head>
+<body>
+<div class="container">
+    <h2 class="titulo">Editar Cadastro</h2>
+    <div class="content">
+        <div class="faturamento">
+            <form action="/AtualizarClienteServlet" method="post">
                 <div class="form-group">
                     <label for="nome">Nome Completo:</label>
-                    <input type="text" id="nome" name="nome" required>
+                    <input type="text" id="nome" name="nome" required value="${param.nome}">
                 </div>
                 <div class="form-group">
                     <label for="dataNascimento">Data de Nascimento:</label>
-                    <input type="date" id="dataNascimento" name="dataNascimento" required>
+                    <input type="date" id="dataNascimento" name="nascimento" required value="${param.nascimento}>">
                 </div>
                 <div class="form-group">
                     <label>Gênero:</label>
-                    <input type="radio" id="generoMasculino" name="genero" value="masculino" required>
+                    <input type="radio" id="generoMasculino" name="genero" value="masculino" required checked>
                     <label for="generoMasculino">Masculino</label>
                     <input type="radio" id="generoFeminino" name="genero" value="feminino">
                     <label for="generoFeminino">Feminino</label>
@@ -54,14 +55,30 @@
                     <label for="uf">UF:</label>
                     <input type="text" id="uf" name="uf" required>
                 </div>
-                <!-- ... -->
-            </div>
+                <button type="submit">Salvar</button>
+            </form>
         </div>
-        <form id="cadastroForm">
-            <!-- Restante do formulário aqui -->
-            <button type="submit">Salvar</button>
-        </form>
     </div>
-
-    </body>
-    </html>
+</div>
+<script>
+    $(document).ready(function() {
+        $("#cep").on("blur", function() {
+            var cep = $(this).val().replace(/\D/g, '');
+            if (cep !== "") {
+                $.getJSON("https://viacep.com.br/ws/" + cep + "/json/", function(data) {
+                    if (!("erro" in data)) {
+                        $("#logradouro").val(data.logradouro);
+                        $("#complemento").val(data.complemento);
+                        $("#bairro").val(data.bairro);
+                        $("#cidade").val(data.localidade);
+                        $("#uf").val(data.uf);
+                    } else {
+                        alert("CEP não encontrado.");
+                    }
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
