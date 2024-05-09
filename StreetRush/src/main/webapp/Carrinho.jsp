@@ -15,10 +15,19 @@
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
             crossorigin="anonymous"></script>
     <!--===============================================================================================-->
-    <link rel="stylesheet" href="Csstela.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>StreetRushGear</title>
+    <link rel="stylesheet" href="CssTela.css">
 </head>
+<style>
+    /* Estilo para fixar o nav no topo */
+    .fixed-top {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+</style>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
@@ -47,7 +56,7 @@
                 <c:if test="${sessionScope.usuarioLogado != null or sessionScope.clienteLogado != null}">
                     <div class="dropdown">
                         <button class="btn btn-dark" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Bem-vindo, ${sessionScope.ClienteLogado.nome}
+                            Bem-vindo, ${sessionScope.clienteLogado.nome}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="Perfil.jsp">Perfil</a></li>
@@ -86,104 +95,11 @@
     </div>
 </nav>
 <br><br><br><br>
-<div class="product-container">
-    <img src="caminho-da-imagem.jpg" alt="Produto" id="card-img">
-    <div class="product-details">
-        <p id="card-name">Nome do Produto</p>
-        <h3 style="display: inline-block;">R$</h3> <p id="card-price" style="display: inline-block;">Preço do Produto</p>
-        <p></p>
-        <button class="botao-comprar">Comprar</button>
-        <h3>Descrição</h3><p id="card-description">Descrição do Produto</p>
-    </div>
+<div class="container">
+    <h2>Seu Carrinho</h2>
+    <div id="carrinho-items"></div>
 </div>
-<div class="container-fluid bg-white text-dark py-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>Links Úteis</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-dark">Sobre Nós</a></li>
-                    <li><a href="#" class="text-dark">Produtos</a></li>
-                    <li><a href="#" class="text-dark">Contato</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>Redes Sociais</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-dark">Facebook</a></li>
-                    <li><a href="#" class="text-dark">Twitter</a></li>
-                    <li><a href="#" class="text-dark">Instagram</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>Contato</h5>
-                <address>
-                    Endereço: Rua Exemplo, 123<br>
-                    Cidade Exemplo - Estado<br>
-                    Telefone: (11) 1234-5678<br>
-                    Email: contato@exemplo.com
-                </address>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const botaoComprar = document.querySelector(".botao-comprar");
-        botaoComprar.addEventListener("click", adicionarAoCarrinho);
-        const urlParams = new URLSearchParams(window.location.search);
-        const cardImgElement = document.getElementById("card-img");
-        const cardDescriptionElement = document.getElementById("card-description");
-        const cardPriceElement = document.getElementById("card-price");
-        const cardNameElement = document.getElementById("card-name");
-
-        if (urlParams.has("imgurl")) {
-            cardImgElement.src = urlParams.get("imgurl");
-        }
-
-        if (urlParams.has("description")) {
-            cardDescriptionElement.textContent = urlParams.get("description");
-        }
-
-        if (urlParams.has("price")) { // Verifique se o parâmetro 'price' existe
-            cardPriceElement.textContent = urlParams.get("price"); // Exiba o preço
-        }
-        if (urlParams.has("name")) {
-            cardNameElement.textContent = urlParams.get("name");
-        }
-
-        function adicionarAoCarrinho() {
-            const cardImgElement = document.getElementById("card-img");
-            const cardDescriptionElement = document.getElementById("card-description");
-            const cardPriceElement = document.getElementById("card-price");
-            const cardNameElement = document.getElementById("card-name");
-
-            const itemImgUrl = cardImgElement.src;
-            const itemDescription = cardDescriptionElement.textContent;
-            const itemPrice = cardPriceElement.textContent;
-            const itemName = cardNameElement.textContent;
-
-            const item = {
-                name: itemName,
-                description: itemDescription,
-                price: itemPrice,
-                imageUrl: itemImgUrl
-            };
-
-            adicionarItemAoCarrinho(item);
-        }
-
-        function adicionarItemAoCarrinho(item) {
-            let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-            carrinho.push(item);
-            localStorage.setItem("carrinho", JSON.stringify(carrinho));
-            alert("Item adicionado ao carrinho!");
-        }
-
-    });
-
-</script>
-
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="Carrinho.js"></script>
 </body>
 </html>
