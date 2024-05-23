@@ -39,7 +39,9 @@
                     <th>Valor</th>
                     <th>Status</th>
                     <th>Editar</th>
+                    <c:if test="${sessionScope.usuarioLogado.cargo.equalsIgnoreCase('administrador')}">
                     <th>Alterar Status</th>
+                    </c:if>
                     <c:if test="${sessionScope.usuarioLogado.cargo.equalsIgnoreCase('administrador')}">
                     <th>Visualizar Produto</th>
                     </c:if>
@@ -60,11 +62,13 @@
                         <form id="statusForm_${prod.id}" action="AtualizarStatusPServlet" method="post">
                               <input type="hidden" name="id" value="${prod.id}">
                               <input type="hidden" name="status" value="${prod.status}">
+                              <c:if test="${sessionScope.usuarioLogado.cargo.equalsIgnoreCase('administrador')}">
                               <button type="button" onclick="confirmStatusUpdate('${prod.id}')">Ativar/Inativar</button>
+                              </c:if>
                         </form>
                         </td>
                         <c:if test="${sessionScope.usuarioLogado.cargo.equalsIgnoreCase('administrador')}">
-                        <td><a href="interno.jsp?id=${product.id}&imgurl=${product.imgurl}&name=${product.name}&description=${product.descricao}&price=${product.price}" class="btn btn-dark">Visualizar</a></td>
+                        <td><a href="interno.jsp?id=${prod.id}&imgurl=img/${prod.imagemPrincipal}&name=${prod.nome}&description=${prod.descricao}&price=${prod.preco}" class="btn btn-dark">Visualizar</a></td>
                         </c:if>
                     </tr>
                 </c:forEach>
