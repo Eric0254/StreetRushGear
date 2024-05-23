@@ -99,55 +99,46 @@
     <h2>Seu Carrinho</h2>
     <div id="carrinho-items"></div>
 
-<c:if test="${sessionScope.usuarioLogado != null or sessionScope.clienteLogado != null}">
-    <div class="container mt-5">
-        <h2>Checkout</h2>
-        <form action="/AtualizarClienteServlet" method="post">
-            <div class="form-group">
-                <label for="name">Nome:</label>
-                <input type="text" class="form-control" id="name" placeholder="Digite seu nome">
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Digite seu email">
-            </div>
-            <div class="form-group">
-                <label for="address">Endereço:</label>
-                <input type="text" class="form-control" id="address" placeholder="Digite seu endereço">
-            </div>
-            <div class="form-group">
-                <label for="city">Cidade:</label>
-                <input type="text" class="form-control" id="city" placeholder="Digite sua cidade">
-            </div>
-            <div class="form-group">
-                <label for="zipcode">CEP:</label>
-                <input type="text" class="form-control" id="zipcode" placeholder="Digite seu CEP">
-            </div>
-            <div id="formaPagamento" class="form-group">
-                <label>Forma de pagamento: </label>
-                <br>
-                <input type="radio" id="formaCredito" name="Forma" value="Credito" required checked onclick="desmarcarOutraOpcao('formaDebito')">
-                <label for="formaCredito">Crédito</label>
-                <input type="radio" id="formaDebito" name="Forma" value="Debito" onclick="desmarcarOutraOpcao('formaCredito')">
-                <label for="formaDebito">Débito</label>
-                <input type="radio" id="formaPix" name="Forma" value="Pix" onclick="desmarcarOutraOpcao('formaCredito')">
-                <label for="formaPix">Pix</label>
-            </div>
-            <br>
-            <br>
-            <button type="submit" class="btn btn-primary">Finalizar Compra</button>
-        </form>
+    <h3>Opções de Compra</h3>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="opcaoCompra" id="opcao1" value="opcao1">
+        <label class="form-check-label" for="opcao1">
+            Pix
+        </label>
     </div>
-</c:if>
-<c:if test="${sessionScope.usuarioLogado == null and sessionScope.clienteLogado == null}">
-    <div class="container mt-5">
-        <h2>Calcular frete</h2>
-        <form action="/AtualizarClienteServlet" method="post">
-            <input type="text" id="cep" name="cep" placeholder="Cep" required>
-            <button type="submit" class="btn btn-primary">Calcular</button>
-        </form>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="opcaoCompra" id="opcao2" value="opcao2">
+        <label class="form-check-label" for="opcao2">
+            Cartão de débito
+        </label>
     </div>
-</c:if>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="opcaoCompra" id="opcao3" value="opcao3">
+        <label class="form-check-label" for="opcao3">
+            Cartão de Crédito
+        </label>
+    </div>
+    <h3>Frete</h3>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="cep" placeholder="Digite seu CEP" maxlength="9"> <!-- Limite de 9 caracteres para considerar a máscara -->
+        <button class="btn btn-outline-secondary" id="btnCalcularFrete">Calcular Frete</button>
+    </div>
+
+
+    <select id="opcoes-frete" class="form-select" style="display: none;">
+        <option value="10.00">SEDEX - Entrega em 1 dia útil (R$ 10,00)</option>
+        <option value="5.00">PAC - Entrega em 5 dias úteis (R$ 5,00)</option>
+        <option value="0.00">Frete Grátis (Acima de R$ 100,00)</option>
+    </select>
+
+    <br>
+    <c:if test="${sessionScope.usuarioLogado != null or sessionScope.clienteLogado != null}">
+        <button class="btn btn-primary" id="btnPagar">Ir para Pagamento</button>
+    </c:if>
+    <c:if test="${sessionScope.usuarioLogado == null and sessionScope.clienteLogado == null}">
+        <p>Por favor, <a href="login.jsp">faça login</a> para prosseguir com o pagamento.</p>
+    </c:if>
+
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="Carrinho.js"></script>

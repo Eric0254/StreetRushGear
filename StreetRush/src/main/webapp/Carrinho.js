@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const carrinhoItemsElement = document.getElementById("carrinho-items");
     const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
     let total = 0;
+    let valorFreteAtual = 0;
 
     if (carrinho.length === 0) {
         carrinhoItemsElement.innerHTML = "<p>Seu carrinho está vazio.</p>";
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const totalElement = document.createElement('p');
+    totalElement.id = 'total-compra';
     totalElement.textContent = `Total: R$ ${total.toFixed(2)}`;
     carrinhoItemsElement.appendChild(totalElement);
 
@@ -48,6 +50,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const botoesDiminuir = document.querySelectorAll(".diminuir-quantidade");
     botoesDiminuir.forEach(botao => {
         botao.addEventListener("click", diminuirQuantidade);
+    });
+
+    // Calcular frete
+    $('#btnCalcularFrete').click(function() {
+        $('#opcoes-frete').show();
+    });
+
+    $('#opcoes-frete').change(function() {
+        const freteValor = parseFloat($(this).val());
+        const totalCompraAtual = parseFloat(totalElement.textContent.replace('Total: R$ ', ''));
+
+        // Atualiza o total da compra subtraindo o frete anterior e adicionando o novo valor de frete
+        const novoTotalCompra = totalCompraAtual - valorFreteAtual + freteValor;
+        totalElement.textContent = `Total: R$ ${novoTotalCompra.toFixed(2)}`;
+        valorFreteAtual = freteValor;
     });
 });
 
@@ -87,7 +104,6 @@ function diminuirQuantidade(event) {
         localStorage.setItem("carrinho", JSON.stringify(carrinho));
         location.reload();
     } else {
-
         if (confirm("Deseja remover este item do carrinho?")) {
             carrinho.splice(index, 1);
             localStorage.setItem("carrinho", JSON.stringify(carrinho));
@@ -97,9 +113,18 @@ function diminuirQuantidade(event) {
 }
 
 $(document).ready(function() {
+    $("#cep").on("input", function() {
+        var cep = $(this).val().replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+        if (cep.length > 8) {
+            cep = cep.slice(0, 8); // Limita a 8 dígitos
+        }
+        cep = cep.replace(/(\d{5})(\d)/, "$1-$2"); // Aplica a máscara de CEP
+        $(this).val(cep);
+    });
+
     $("#cep").on("blur", function() {
         var cep = $(this).val().replace(/\D/g, '');
-        if (cep !== "") {
+        if (cep !== "" && cep.length === 8) {
             $.getJSON("https://viacep.com.br/ws/" + cep + "/json/", function(data) {
                 if (!("erro" in data)) {
                     $("#logradouro").val(data.logradouro);
@@ -111,8 +136,17 @@ $(document).ready(function() {
                     alert("CEP não encontrado.");
                 }
             });
+        } else {
+            alert("CEP inválido.");
+        }
+    });
+
+    $('#btnPagar').click(function() {
+        const opcaoSelecionada = $('input[name="opcaoCompra"]:checked').val();
+        if (opcaoSelecionada) {
+            window.location.href = `Pagamento.jsp?opcao=${opcaoSelecionada}`;
+        } else {
+            alert('Por favor, selecione uma opção de compra.');
         }
     });
 });
-
-
