@@ -116,7 +116,7 @@ $(document).ready(function() {
     $("#cep").on("input", function() {
         var cep = $(this).val().replace(/\D/g, ''); // Remove todos os caracteres não numéricos
         if (cep.length > 8) {
-            cep = cep.slice(0, 8); // Limita a 8 dígitos
+            cep = cep.slice(0, 8);
         }
         cep = cep.replace(/(\d{5})(\d)/, "$1-$2"); // Aplica a máscara de CEP
         $(this).val(cep);
@@ -149,4 +149,5 @@ $(document).ready(function() {
             alert('Por favor, selecione uma opção de compra.');
         }
     });
+
 });
